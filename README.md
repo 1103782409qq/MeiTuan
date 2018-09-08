@@ -1,6 +1,6 @@
 # MeiTuan App Write In latest React-Native(0.50.1)
 
-## 视频教程
+## 视频教程aaa
 **现已推出全套视频教程，从创建工程讲起，一行一行编写代码，直至完成整个项目。**
 
 [腾讯课堂](https://ke.qq.com/course/275239?flowToken=1000390)
