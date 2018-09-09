@@ -160,3 +160,65 @@ Github：https://github.com/huanxsd/MeiTuan
 如果对这个Demo有任何疑问，欢迎加入我们的大家庭
 
 ![ReactNative开发者群二维码.png](http://upload-images.jianshu.io/upload_images/5685774-957c90b45c8f8912.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+——————————————————————————————————————————————我的代码分析-----——————————————————————
+
+1.StackNavigator是配置所有导航的，TabNavigator是配置tab的
+2.路由导航方法 <Button title="Go to Details" onPress={() => this.props.navigation.navigate('Details')} />
+3.每次调用 ` push ` 时, 我们会向导航堆栈中添加新路由。 当你调用 ` navigate ` 时, 它首先尝试查找具有该名称的现有路由, 并且只有在堆栈上没有一个新路由时才会推送该路由。<br>
+  如果当前页面可以执行返回操作，则 stack navigator 会自动提供一个包含返回按钮的标题栏（如果导航堆栈中只有一个页面，则没有任何可返回的内容，因此也不存在返回键）。
+  有时候你希望能够以编程的方式触发此行为，可以使用` this.props.navigation.goBack() `。<br>
+  每次调用 ` push ` 时, 我们会向导航堆栈中添加新路由。 当你调用 ` navigate ` 时, 它首先尝试查找具有该名称的现有路由, 并且只有在堆栈上没有一个新路由时才会推送该路由。<br>
+
+  另一个常见需求是能够跨越*多个*页面返回 - 例如，如果你处在堆栈深处，上面有多个页面，此时你想要将上面所有的页面都销毁，并返回第一个页面。 在这种情况下，我们知道我们要回到` Home `，
+  所以我们可以使用` navigate('Home') `（而不是` push `！ 尝试一下，看看有什么不同）。 另一个选择是` navigation.popToTop() `，它可以返回到堆栈中的第一个页面。<br>
+4.传递参数给路由  <Button title="Go to Details" => { this.props.navigation.navigate('Details', {itemId: 86,otherParam: 'anything you want here',});}}/>  <br>
+5.navigationOptions配置包括配置tab的底部，和header头部，可以设置
+  Home: {
+            screen: HomeScene,
+            navigationOptions: ({navigation}) => ({
+                tabBarLabel: '团购',
+                tabBarIcon: ({focused, tintColor}) => (
+                    <TabBarItem
+                        tintColor={tintColor}
+                        focused={focused}
+                        normalImage={require('./img/tabbar/tabbar_homepage.png')}
+                        selectedImage={require('./img/tabbar/tabbar_homepage_selected.png')}
+                    />
+                )
+            }),
+        } <br>
+          static navigationOptions = ({navigation}: any) => ({
+                headerTitle: (
+                    <TouchableOpacity style={styles.searchBar}>
+                        <Image source={require('../../img/home/search_icon.png')} style={styles.searchIcon} />
+                        <Paragraph>一点点
+                        </Paragraph>
+                    </TouchableOpacity>
+                ),
+                headerRight: (
+                    <NavigationItem
+                        icon={require('../../img/mine/icon_navigation_item_message_white.png')}
+                        onPress={() => {
+
+                        }}
+                    />
+                ),
+                headerLeft: (
+                    <NavigationItem
+                        title='福州'
+                        titleStyle={{color: 'white'}}
+                        onPress={() => {
+
+                        }}
+                    />
+                ),
+                headerStyle: {backgroundColor: color.primary},
+            }) <br>
+6.ScrollView内容少的时候选择，可以做横向的幻灯片，数据多时用FlatList还可以方便地渲染行间分隔线，支持多列布局，无限滚动加载等等。<br>
+7.通过  this.setState({
+                    dataList: dataList,
+                    refreshing: false,
+                })设置某个变量的值<br>
+8.添加选择地区页面，添加字体图标react-native-vector-icons和react-native-easy-toast。https://www.cnblogs.com/evai/p/5804751.html<br>
+9.'猜你喜欢'页面是一个页面，嵌入的http链接<br>
+10.添加自定义的图标和splash。https://www.cnblogs.com/lidongxu/p/5114355.html<br>

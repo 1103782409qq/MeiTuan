@@ -29,7 +29,6 @@ class HomeMenuView extends PureComponent<Props, State>  {
 
     constructor(props: Object) {
         super(props)
-
         this.state = {
             currentPage: 0
         }
@@ -50,7 +49,6 @@ class HomeMenuView extends PureComponent<Props, State>  {
                 />
             )
         )
-
         let menuViews = []
         let pageCount = Math.ceil(menuItems.length / 10)
 

@@ -38,14 +38,15 @@ class HomeScene extends PureComponent<Props, State> {
         headerTitle: (
             <TouchableOpacity style={styles.searchBar}>
                 <Image source={require('../../img/home/search_icon.png')} style={styles.searchIcon} />
-                <Paragraph>一点点</Paragraph>
+                <Paragraph>一点点
+                </Paragraph>
             </TouchableOpacity>
         ),
         headerRight: (
             <NavigationItem
                 icon={require('../../img/mine/icon_navigation_item_message_white.png')}
                 onPress={() => {
-
+                    alert(2)
                 }}
             />
         ),
@@ -54,7 +55,7 @@ class HomeScene extends PureComponent<Props, State> {
                 title='福州'
                 titleStyle={{color: 'white'}}
                 onPress={() => {
-
+                    navigation.navigate('SelectCity')
                 }}
             />
         ),
@@ -77,8 +78,9 @@ class HomeScene extends PureComponent<Props, State> {
 
     requestData = () => {
         this.setState({refreshing: true})
-
+        // 折扣内容，没值
         this.requestDiscount()
+        // 列表的数据
         this.requestRecommend()
     }
     
@@ -144,22 +146,24 @@ class HomeScene extends PureComponent<Props, State> {
                 <HomeGridView infos={this.state.discounts} onGridSelected={(this.onGridSelected)} />
                 <SpacingView />
                 <View style={styles.recommendHeader}>
-                    <Heading3>猜你喜欢</Heading3>
+                    <TouchableOpacity onPress={this.onGridSelected}>
+                        <Heading3>猜你喜欢</Heading3>
+                    </TouchableOpacity>
                 </View>
             </View>
         )
     }
 
     onGridSelected = (index: number) => {
-        let discount = this.state.discounts[index]
-
-        if (discount.type == 1) {
-            StatusBar.setBarStyle('default', false)
-
-            let location = discount.tplurl.indexOf('http')
-            let url = discount.tplurl.slice(location)
-            this.props.navigation.navigate('Web', {url: url})
-        }
+        // let discount = this.state.discounts[index]
+        //
+        // if (discount.type == 1) {
+        //     StatusBar.setBarStyle('default', false)
+        //
+        //     let location = discount.tplurl.indexOf('http')
+        //     let url = discount.tplurl.slice(location)
+            this.props.navigation.navigate('Web', {url: 'http://www.baidu.com'})
+        // }
     }
 
     onMenuSelected = (index: number) => {
