@@ -219,6 +219,8 @@ Github：https://github.com/huanxsd/MeiTuan
                     dataList: dataList,
                     refreshing: false,
                 })设置某个变量的值<br>
-8.添加选择地区页面，添加字体图标react-native-vector-icons和react-native-easy-toast。https://www.cnblogs.com/evai/p/5804751.html<br>
+8.添加选择地区页面https://gitee.com/react9527/react-native-select-city，添加字体图标react-native-vector-icons和react-native-easy-toast。https://www.cnblogs.com/evai/p/5804751.html<br>
 9.'猜你喜欢'页面是一个页面，嵌入的http链接<br>
 10.添加自定义的图标和splash。https://www.cnblogs.com/lidongxu/p/5114355.html<br>
+11.选择地区后，返回到首页，改变地区名字，为了做下拉菜单，引入antd-mobile。https://blog.csdn.net/sinat_17775997/article/details/68936093
+但是之后antd更新，造成上面运行不了，所以pakage.json中版本要改"antd-mobile": "2.0.0"

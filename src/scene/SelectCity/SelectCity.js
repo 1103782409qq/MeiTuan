@@ -21,6 +21,7 @@ import CityList from './IndexListView';
 
 // 下面是数据部分
 import DATA_JSON from './city-list.json';
+import HomeScene from "../Home/HomeScene";
 const NOW_CITY_LIST = [
     {
         "name": "阿里",
@@ -51,9 +52,6 @@ export default class SimpleSelectCity extends Component {
         headerTitle: '选择城市',
         headerStyle: {backgroundColor: 'white'},
     })
-    onPressBack() {
-        alert('你选择了返回====》header back');
-    }
 
     onChanegeTextKeyword(newVal) {
         // alert(newVal);
@@ -85,15 +83,14 @@ export default class SimpleSelectCity extends Component {
             this.setState({showSearchResult: false, keyword:''});
         }
 
-        alert('你选择了城市====》' + cityJson.id + '#####' + cityJson.name);
-        this.props.navigation.goBack()
+        // alert('你选择了城市====》' + cityJson.id + '#####' + cityJson.name);
+        this.props.navigation.navigate('Home', {name: cityJson.name})
 
     }
 
     render() {
         return (
             <View style={styles.container}>
-                {/*<Header onPressBack={this.onPressBack.bind(this)} title="当前城市：北京"/>*/}
                 <SearchBox
                     keyword={this.state.keyword}
                     onChanegeTextKeyword={(vv) => {

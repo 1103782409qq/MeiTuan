@@ -11,7 +11,7 @@ import React, {PureComponent} from 'react'
 import {View, Text, StyleSheet, ScrollView, TouchableOpacity, ListView, Image, StatusBar, FlatList} from 'react-native'
 
 import {Heading2, Heading3, Paragraph} from '../../widget/Text'
-import {color, Button, NavigationItem, SpacingView} from '../../widget'
+import {color, NavigationItem, SpacingView} from '../../widget'
 
 import {screen, system} from '../../common'
 import api from '../../api'
@@ -20,7 +20,7 @@ import api from '../../api'
 import HomeMenuView from './HomeMenuView'
 import HomeGridView from './HomeGridView'
 import GroupPurchaseCell from '../GroupPurchase/GroupPurchaseCell'
-
+import { Button } from 'antd-mobile';
 type Props = {
     navigation: any,
 }
@@ -29,11 +29,11 @@ type State = {
     discounts: Array<Object>,
     dataList: Array<Object>,
     refreshing: boolean,
+    adress:string
 }
 
 
 class HomeScene extends PureComponent<Props, State> {
-
     static navigationOptions = ({navigation}: any) => ({
         headerTitle: (
             <TouchableOpacity style={styles.searchBar}>
@@ -52,7 +52,7 @@ class HomeScene extends PureComponent<Props, State> {
         ),
         headerLeft: (
             <NavigationItem
-                title='福州'
+                title={navigation.state.params?navigation.state.params.name:'福州'}
                 titleStyle={{color: 'white'}}
                 onPress={() => {
                     navigation.navigate('SelectCity')
@@ -69,7 +69,9 @@ class HomeScene extends PureComponent<Props, State> {
             discounts: [],
             dataList: [],
             refreshing: false,
+            adress:'福州'
         }
+
     }
 
     componentDidMount() {
@@ -171,20 +173,23 @@ class HomeScene extends PureComponent<Props, State> {
     }
 
     render() {
-        return (
-            <View style={styles.container}>
-                <FlatList
-                    data={this.state.dataList}
-                    renderItem={this.renderCell}
 
-                    keyExtractor={this.keyExtractor}
-                    onRefresh={this.requestData}
-                    refreshing={this.state.refreshing}
+        return <Button>Start</Button>;
 
-                    ListHeaderComponent={this.renderHeader}
-                />
-            </View>
-        )
+        // return (
+        //     <View style={styles.container}>
+        //         <FlatList
+        //             data={this.state.dataList}
+        //             renderItem={this.renderCell}
+        //
+        //             keyExtractor={this.keyExtractor}
+        //             onRefresh={this.requestData}
+        //             refreshing={this.state.refreshing}
+        //
+        //             ListHeaderComponent={this.renderHeader}
+        //         />
+        //     </View>
+        // )
     }
 }
 
