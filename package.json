@@ -19,7 +19,8 @@
     "react-native-refresh-list-view": "^1.0.6",
     "react-native-scrollable-tab-view": "^0.8.0",
     "react-native-vector-icons": "^5.0.0",
-    "react-navigation": "^1.0.0-beta.19"
+    "react-navigation": "^1.0.0-beta.19",
+    "rn-splash-screen": "^5.2.0"
   },
   "devDependencies": {
     "babel-jest": "19.0.0",

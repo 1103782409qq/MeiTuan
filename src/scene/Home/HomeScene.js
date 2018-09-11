@@ -21,6 +21,8 @@ import HomeMenuView from './HomeMenuView'
 import HomeGridView from './HomeGridView'
 import GroupPurchaseCell from '../GroupPurchase/GroupPurchaseCell'
 import { Button } from 'antd-mobile';
+import SplashScreen from "rn-splash-screen";
+
 type Props = {
     navigation: any,
 }
@@ -76,6 +78,9 @@ class HomeScene extends PureComponent<Props, State> {
 
     componentDidMount() {
         this.requestData()
+        setTimeout(() => {
+            SplashScreen.hide();
+        }, 2000);//延时2秒消失
     }
 
     requestData = () => {

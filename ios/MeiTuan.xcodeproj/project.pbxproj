@@ -33,6 +33,7 @@
 		ECA5EF72546F4CE79F549980 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59511A40D090434EB9A274F2 /* Octicons.ttf */; };
 		98A0E9F1F5F44560B52116FB /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F7A7AF3564A49088EE067AF /* SimpleLineIcons.ttf */; };
 		9E99AF3CE3174C4D84A496E3 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 066B38F47DCA4149A63E93DF /* Zocial.ttf */; };
+		12C2F88EE4AD47E9813D11B5 /* libRCTSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEDD0D4B7B64D959B7531CA /* libRCTSplashScreen.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -333,6 +334,8 @@
 		59511A40D090434EB9A274F2 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		8F7A7AF3564A49088EE067AF /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		066B38F47DCA4149A63E93DF /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		155FE570778B4E5D92DE35A6 /* RCTSplashScreen.xcodeproj */ = {isa = PBXFileReference; name = "RCTSplashScreen.xcodeproj"; path = "../node_modules/rn-splash-screen/ios/RCTSplashScreen.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		9CEDD0D4B7B64D959B7531CA /* libRCTSplashScreen.a */ = {isa = PBXFileReference; name = "libRCTSplashScreen.a"; path = "libRCTSplashScreen.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +357,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				62200EA944E347BEBD19CE1B /* libRNVectorIcons.a in Frameworks */,
+				12C2F88EE4AD47E9813D11B5 /* libRCTSplashScreen.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +537,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				1A1C1EA17D8041F7AF4B9CFD /* AirMaps.xcodeproj */,
 				87086D6807C64B93AAE9E762 /* RNVectorIcons.xcodeproj */,
+				155FE570778B4E5D92DE35A6 /* RCTSplashScreen.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1045,11 +1050,13 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/rn-splash-screen/ios/RCTSplashScreen",
 				);
 				INFOPLIST_FILE = MeiTuan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
 				);
@@ -1075,11 +1082,13 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/rn-splash-screen/ios/RCTSplashScreen",
 				);
 				INFOPLIST_FILE = MeiTuan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
 				);
