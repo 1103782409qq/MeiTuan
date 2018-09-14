@@ -226,3 +226,4 @@ Github：https://github.com/huanxsd/MeiTuan
 但是之后antd更新，造成上面运行不了，所以pakage.json中版本要改"antd-mobile": "2.0.0"
 12.Could not determine java version from '10.0.1'.修改distributionUrl=https\://services.gradle.org/distributions/gradle-2.4-all.zip，用android studio安装gradle更新就可以了<br>
 13.android修改图标在android\app\src\main\res\mipmap-xxx中直接覆盖图标；splash教程。https://blog.csdn.net/huxinguang_ios/article/details/79892440
+14.https://react.parts可以查组件，React Native 如何使用Ant-design组件库教程https://www.jianshu.com/p/29e5f259cc9d

@@ -7,7 +7,7 @@
  */
 
 
-import React, {PureComponent} from 'react'
+import React, {Component,PureComponent} from 'react'
 import {View, Text, StyleSheet, ScrollView, TouchableOpacity, ListView, Image, StatusBar, FlatList} from 'react-native'
 
 import {Heading2, Heading3, Paragraph} from '../../widget/Text'
@@ -20,7 +20,7 @@ import api from '../../api'
 import HomeMenuView from './HomeMenuView'
 import HomeGridView from './HomeGridView'
 import GroupPurchaseCell from '../GroupPurchase/GroupPurchaseCell'
-import { Button } from 'antd-mobile';
+import { Button, NoticeBar, Popover,Icon,SearchBar, SegmentedControl } from 'antd-mobile';
 import SplashScreen from "rn-splash-screen";
 
 type Props = {
@@ -176,10 +176,79 @@ class HomeScene extends PureComponent<Props, State> {
     onMenuSelected = (index: number) => {
         alert(index)
     }
+    state = {
+        value: '',
+    }
+
+    onScrollChange = (value) => {
+        console.log(value)
+    }
+
+    handleClick = () => {
+        this.manualFocusInst.focus()
+    }
+
+    clear = () => {
+        this.setState({ value: '' })
+    }
 
     render() {
+        return (
+            <View style={styles.container}>
+                <SearchBar
+                    value={this.state.value}
+                    placeholder="Search"
+                    onSubmit={value => console.log(value, 'onSubmit')}
+                    onClear={value => this.clear(value, 'onClear')}
+                    onFocus={() => console.log('onFocus')}
+                    onBlur={() => console.log('onBlur')}
+                    onCancel={() => this.clear('onCancel')}
+                    showCancelButton
+                    onChange={this.onChange}
+                />
+                <SegmentedControl
+                    values={['Segment1', 'Segment2', 'Segment3']}
+                    tintColor={'#ff0000'}
+                    style={{ height: 40, width: 250 }}
+                />
+                <NoticeBar
+                    marqueeProps={{ loop: true, style: { padding: 10 } }}>
+                    Notice: The arrival time of incomes and transfers of Yu &#39;E Bao will be delayed during National Day.
+                </NoticeBar>
+                <Button>Start</Button>
+                <Popover mask
+                         overlayClassName="fortest"
+                         overlayStyle={{ color: 'currentColor' }}
+                         visible={this.state.visible}
+                         overlay={[
+                             (<Item key="4" value="scan" icon={myImg('tOtXhkIWzwotgGSeptou')} data-seed="logId">Scan</Item>),
+                             (<Item key="5" value="special" icon={myImg('PKAgAqZWJVNwKsAJSmXd')} style={{ whiteSpace: 'nowrap' }}>My Qrcode</Item>),
+                             (<Item key="6" value="button ct" icon={myImg('uQIYTFeRrjPELImDRrPt')}>
+                                 <span style={{ marginRight: 5 }}>Help</span>
+                             </Item>),
+                         ]}
+                         align={{
+                             overflow: { adjustY: 0, adjustX: 0 },
+                             offset: [-10, 0],
+                         }}
+                         onVisibleChange={this.handleVisibleChange}
+                         onSelect={this.onSelect}
+                >
+                    <div style={{
+                        height: '100%',
+                        padding: '0 15px',
+                        marginRight: '-15px',
+                        display: 'flex',
+                        alignItems: 'center',
+                    }}
+                    >
+                        <Icon type="ellipsis" />
+                    </div>
+                </Popover>
+            </View>
+        )
 
-        return <Button>Start</Button>;
+        // return <Button>Start</Button>;
 
         // return (
         //     <View style={styles.container}>
@@ -202,8 +271,24 @@ class HomeScene extends PureComponent<Props, State> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: color.paper
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
     },
+    welcome: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+    },
+    instructions: {
+        textAlign: 'center',
+        color: '#333333',
+        marginBottom: 5,
+    },
+    // container: {
+    //     flex: 1,
+    //     backgroundColor: color.paper
+    // },
     recommendHeader: {
         height: 35,
         justifyContent: 'center',
