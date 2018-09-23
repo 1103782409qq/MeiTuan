@@ -16,6 +16,7 @@
     "react-dom": "^16.5.0",
     "react-native": "0.50.1",
     "react-native-easy-toast": "^1.1.0",
+    "react-native-menu": "^0.23.0",
     "react-native-page-control": "^1.1.1",
     "react-native-popover": "^0.2.0",
     "react-native-popover-menu": "0.0.19",

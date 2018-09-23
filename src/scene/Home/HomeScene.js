@@ -16,6 +16,7 @@ import {color, NavigationItem, SpacingView} from '../../widget'
 import {screen, system} from '../../common'
 import api from '../../api'
 
+import { NoticeBar, Popover,SearchBar, SegmentedControl } from 'antd-mobile';
 
 import HomeMenuView from './HomeMenuView'
 import HomeGridView from './HomeGridView'
@@ -24,6 +25,9 @@ import SplashScreen from "rn-splash-screen";
 import RNPopoverMenu from 'react-native-popover-menu';
 
 import Icon from 'react-native-vector-icons'
+const Item = Popover.Item;
+
+
 type Props = {
     navigation: any,
 }
@@ -41,6 +45,35 @@ type State = {
         {/*alert(2)*/}
     {/*}}*/}
 {/*/>*/}
+{/*<View style={styles.container}>*/}
+    {/*<Button ref="btn"*/}
+    {/*onPress={this.onShowPopover}*/}
+    {/*title="Learn More"*/}
+    {/*color="#841584"*/}
+    {/*accessibilityLabel="Learn more about this purple button"*/}
+    {/*/>*/}
+    {/*<FlatList*/}
+        {/*data={this.state.dataList}*/}
+        {/*renderItem={this.renderCell}*/}
+
+        {/*keyExtractor={this.keyExtractor}*/}
+        {/*onRefresh={this.requestData}*/}
+        {/*refreshing={this.state.refreshing}*/}
+
+        {/*ListHeaderComponent={this.renderHeader}*/}
+    {/*/>*/}
+{/*</View>*/}
+{/*<Popover.Item*/}
+    {/*key="6"*/}
+    {/*value="button ct"*/}
+    {/*icon='https://gw.alipayobjects.com/zos/rmsportal/tOtXhkIWzwotgGSeptou.svg'*/}
+    {/*style={{ backgroundColor: "#efeff4" ,marginLeft:100}}*/}
+{/*>*/}
+    {/*<Text>关闭</Text>*/}
+{/*</Popover.Item>*/}
+const myImg = src => <img src={`https://gw.alipayobjects.com/zos/rmsportal/${src}.svg`} className="am-icon am-icon-xs" alt="" />;
+
+
 class HomeScene extends PureComponent<Props, State> {
     static navigationOptions = ({navigation}: any) => ({
         headerTitle: (
@@ -58,7 +91,8 @@ class HomeScene extends PureComponent<Props, State> {
                     color="#841584"
                     accessibilityLabel="Learn more about this purple button"
             />
-        ),
+
+),
         headerLeft: (
             <NavigationItem
                 title={navigation.state.params?navigation.state.params.name:'福州'}
@@ -99,7 +133,7 @@ class HomeScene extends PureComponent<Props, State> {
         // 列表的数据
         this.requestRecommend()
     }
-    
+
     requestRecommend = async () => {
         try {
             let response = await fetch(api.recommend)
@@ -186,39 +220,42 @@ class HomeScene extends PureComponent<Props, State> {
         alert(index)
     }
     onShowPopover = ()=>{
-        let copy = <Icon family={'FontAwesome'} name={'copy'} color={'#000000'} size={30} />
-        let paste = <Icon family={'FontAwesome'} name={'paste'} color={'#000000'} size={30} />
-        let share = <Icon family={'FontAwesome'} name={'share'} color={'#000000'} size={30} />
-
-        let menus = [
-            {
-                label: "Editing",
-                menus: [
-                    { label: "Copy", icon: copy },
-                    { label: "Paste", icon: paste }
-                ]
-            },
-            {
-                label: "Other",
-                menus: [
-                    { label: "Share", icon: share }
-                ]
-            },
-            {
-                label: "",
-                menus: [
-                    { label: "Share me please" }
-                ]
-            }
-        ]
-        // debugger
-console.log(this.refs.btn)
-        RNPopoverMenu.Show(this.refs.btn, {
-            title: "",
-            menus: menus,
-            onDone: selection => { },
-            onCancel: () => { }
-        });
+//         let copy = <Icon family={'FontAwesome'} name={'copy'} color={'#000000'} size={30} />
+//         let paste = <Icon family={'FontAwesome'} name={'paste'} color={'#000000'} size={30} />
+//         let share = <Icon family={'FontAwesome'} name={'share'} color={'#000000'} size={30} />
+//
+//         let menus = [
+//             {
+//                 label: "Editing",
+//                 menus: [
+//                     { label: "Copy", icon: copy },
+//                     { label: "Paste", icon: paste }
+//                 ]
+//             },
+//             {
+//                 label: "Other",
+//                 menus: [
+//                     { label: "Share", icon: share }
+//                 ]
+//             },
+//             {
+//                 label: "",
+//                 menus: [
+//                     { label: "Share me please" }
+//                 ]
+//             }
+//         ]
+//         // debugger
+// console.log(this.refs.btn)
+//         RNPopoverMenu.Show(this.refs.btn, {
+//             title: "",
+//             menus: menus,
+//             onDone: selection => { },
+//             onCancel: () => { }
+//         });
+        this.refs["Popover"].menuContextRef.openMenu(
+            "m"
+        );
     }
     state = {
         value: '',
@@ -238,24 +275,29 @@ console.log(this.refs.btn)
 
     render() {
         return (
-            <View style={styles.container}>
-                <Button ref="btn"
-                    onPress={this.onShowPopover}
-                    title="Learn More"
-                    color="#841584"
-                    accessibilityLabel="Learn more about this purple button"
-                />
-                <FlatList
-                    data={this.state.dataList}
-                    renderItem={this.renderCell}
-
-                    keyExtractor={this.keyExtractor}
-                    onRefresh={this.requestData}
-                    refreshing={this.state.refreshing}
-
-                    ListHeaderComponent={this.renderHeader}
-                />
+            <View                     style={{ backgroundColor: "#eee" ,position:'absolute',top:0,right:0}}
+            >
+                <Popover
+                    name={"m"}
+                    ref={"Popover"}
+                    mask
+                    overlayClassName="fortest"
+                    overlayStyle={{ color: 'currentColor' }}
+                    overlay={[
+                        (<Item key="4" value="scan" icon={myImg('tOtXhkIWzwotgGSeptou')} data-seed="logId"><Text>Scan</Text></Item>),
+                        (<Item key="5" value="special" icon={myImg('PKAgAqZWJVNwKsAJSmXd')} ><Text>My Qrcode</Text></Item>),
+                        (<Item key="6" value="button ct" icon={myImg('uQIYTFeRrjPELImDRrPt')}>
+                            <Text>Help</Text>
+                        </Item>),
+                    ]}
+                    align={{
+                        overflow: { adjustY: 0, adjustX: 0 },
+                        offset: [-10, 0],
+                    }}
+                >
+                </Popover>
             </View>
+
         )
     }
 }

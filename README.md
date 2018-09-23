@@ -234,3 +234,4 @@ headerRight:
         <Text >{navigation.state.params.editState?'完成':'编辑'}</Text>
     </TouchableOpacity><br>
 16.https://github.com/react-navigation/react-navigation/issues/1772。header的按钮，刷新内容区域
+17.antd popover 链接https://github.com/ant-design/ant-design-mobile-rn/issues/21。
