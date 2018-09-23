@@ -222,8 +222,15 @@ Github：https://github.com/huanxsd/MeiTuan
 8.添加选择地区页面https://gitee.com/react9527/react-native-select-city，添加字体图标react-native-vector-icons和react-native-easy-toast。https://www.cnblogs.com/evai/p/5804751.html<br>
 9.'猜你喜欢'页面是一个页面，嵌入的http链接<br>
 10.ios添加自定义的图标和splash。生成图片教程：https://apetools.webprofusion.com/ 。修改教程https://www.cnblogs.com/lidongxu/p/5114355.html。<br>
-11.选择地区后，返回到首页，改变地区名字，为了做下拉菜单，引入antd-mobile。https://blog.csdn.net/sinat_17775997/article/details/68936093
+11.选择地区后，返回到首页，改变地区名字，为了做下拉菜单，引入antd-mobile。https://blog.csdn.net/sinat_17775997/article/details/68936093。代码https://www.jianshu.com/p/29e5f259cc9d
 但是之后antd更新，造成上面运行不了，所以pakage.json中版本要改"antd-mobile": "2.0.0"
 12.Could not determine java version from '10.0.1'.修改distributionUrl=https\://services.gradle.org/distributions/gradle-2.4-all.zip，用android studio安装gradle更新就可以了<br>
 13.android修改图标在android\app\src\main\res\mipmap-xxx中直接覆盖图标；splash教程。https://blog.csdn.net/huxinguang_ios/article/details/79892440
-14.https://react.parts可以查组件，React Native 如何使用Ant-design组件库教程https://www.jianshu.com/p/29e5f259cc9d
+14.https://react.parts可以查组件，React Native 如何使用Ant-design组件库教程https://www.jianshu.com/p/29e5f259cc9d<br>
+15.https://blog.csdn.net/u012878818/article/details/75007739.react-navigation时,单页面设置navigationOptions中,进行Static中调用方法<br>
+https://bbs.reactnative.cn/topic/3855/react-navigation的navigationoptions-中如何调用当前类的事件方法。
+headerRight:
+    <TouchableOpacity onPress={()=>{navigation.setParams({editState:!navigation.state.params.editState})}}>
+        <Text >{navigation.state.params.editState?'完成':'编辑'}</Text>
+    </TouchableOpacity><br>
+16.https://github.com/react-navigation/react-navigation/issues/1772。header的按钮，刷新内容区域

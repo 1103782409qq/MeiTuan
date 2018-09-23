@@ -8,7 +8,7 @@
 
 
 import React, {Component,PureComponent} from 'react'
-import {View, Text, StyleSheet, ScrollView, TouchableOpacity, ListView, Image, StatusBar, FlatList} from 'react-native'
+import {View, Button, StyleSheet, ScrollView, TouchableOpacity, ListView, Image,Text, StatusBar, FlatList} from 'react-native'
 
 import {Heading2, Heading3, Paragraph} from '../../widget/Text'
 import {color, NavigationItem, SpacingView} from '../../widget'
@@ -20,9 +20,10 @@ import api from '../../api'
 import HomeMenuView from './HomeMenuView'
 import HomeGridView from './HomeGridView'
 import GroupPurchaseCell from '../GroupPurchase/GroupPurchaseCell'
-import { Button, NoticeBar, Popover,Icon,SearchBar, SegmentedControl } from 'antd-mobile';
 import SplashScreen from "rn-splash-screen";
+import RNPopoverMenu from 'react-native-popover-menu';
 
+import Icon from 'react-native-vector-icons'
 type Props = {
     navigation: any,
 }
@@ -34,7 +35,12 @@ type State = {
     adress:string
 }
 
-
+{/*<NavigationItem*/}
+    {/*icon={require('../../img/mine/icon_navigation_item_message_white.png')}*/}
+    {/*onPress={() => {*/}
+        {/*alert(2)*/}
+    {/*}}*/}
+{/*/>*/}
 class HomeScene extends PureComponent<Props, State> {
     static navigationOptions = ({navigation}: any) => ({
         headerTitle: (
@@ -44,12 +50,13 @@ class HomeScene extends PureComponent<Props, State> {
                 </Paragraph>
             </TouchableOpacity>
         ),
+
         headerRight: (
-            <NavigationItem
-                icon={require('../../img/mine/icon_navigation_item_message_white.png')}
-                onPress={() => {
-                    alert(2)
-                }}
+            <Button ref="btn"
+                    onPress={()=>navigation.state.params._onShowPopover()}
+                    title="Learn More"
+                    color="#841584"
+                    accessibilityLabel="Learn more about this purple button"
             />
         ),
         headerLeft: (
@@ -62,6 +69,7 @@ class HomeScene extends PureComponent<Props, State> {
             />
         ),
         headerStyle: {backgroundColor: color.primary},
+        // header:null
     })
 
     constructor(props: Props) {
@@ -77,6 +85,7 @@ class HomeScene extends PureComponent<Props, State> {
     }
 
     componentDidMount() {
+        this.props.navigation.setParams({ _onShowPopover:this.onShowPopover })
         this.requestData()
         setTimeout(() => {
             SplashScreen.hide();
@@ -176,6 +185,41 @@ class HomeScene extends PureComponent<Props, State> {
     onMenuSelected = (index: number) => {
         alert(index)
     }
+    onShowPopover = ()=>{
+        let copy = <Icon family={'FontAwesome'} name={'copy'} color={'#000000'} size={30} />
+        let paste = <Icon family={'FontAwesome'} name={'paste'} color={'#000000'} size={30} />
+        let share = <Icon family={'FontAwesome'} name={'share'} color={'#000000'} size={30} />
+
+        let menus = [
+            {
+                label: "Editing",
+                menus: [
+                    { label: "Copy", icon: copy },
+                    { label: "Paste", icon: paste }
+                ]
+            },
+            {
+                label: "Other",
+                menus: [
+                    { label: "Share", icon: share }
+                ]
+            },
+            {
+                label: "",
+                menus: [
+                    { label: "Share me please" }
+                ]
+            }
+        ]
+        // debugger
+console.log(this.refs.btn)
+        RNPopoverMenu.Show(this.refs.btn, {
+            title: "",
+            menus: menus,
+            onDone: selection => { },
+            onCancel: () => { }
+        });
+    }
     state = {
         value: '',
     }
@@ -195,75 +239,24 @@ class HomeScene extends PureComponent<Props, State> {
     render() {
         return (
             <View style={styles.container}>
-                <SearchBar
-                    value={this.state.value}
-                    placeholder="Search"
-                    onSubmit={value => console.log(value, 'onSubmit')}
-                    onClear={value => this.clear(value, 'onClear')}
-                    onFocus={() => console.log('onFocus')}
-                    onBlur={() => console.log('onBlur')}
-                    onCancel={() => this.clear('onCancel')}
-                    showCancelButton
-                    onChange={this.onChange}
+                <Button ref="btn"
+                    onPress={this.onShowPopover}
+                    title="Learn More"
+                    color="#841584"
+                    accessibilityLabel="Learn more about this purple button"
                 />
-                <SegmentedControl
-                    values={['Segment1', 'Segment2', 'Segment3']}
-                    tintColor={'#ff0000'}
-                    style={{ height: 40, width: 250 }}
+                <FlatList
+                    data={this.state.dataList}
+                    renderItem={this.renderCell}
+
+                    keyExtractor={this.keyExtractor}
+                    onRefresh={this.requestData}
+                    refreshing={this.state.refreshing}
+
+                    ListHeaderComponent={this.renderHeader}
                 />
-                <NoticeBar
-                    marqueeProps={{ loop: true, style: { padding: 10 } }}>
-                    Notice: The arrival time of incomes and transfers of Yu &#39;E Bao will be delayed during National Day.
-                </NoticeBar>
-                <Button>Start</Button>
-                <Popover mask
-                         overlayClassName="fortest"
-                         overlayStyle={{ color: 'currentColor' }}
-                         visible={this.state.visible}
-                         overlay={[
-                             (<Item key="4" value="scan" icon={myImg('tOtXhkIWzwotgGSeptou')} data-seed="logId">Scan</Item>),
-                             (<Item key="5" value="special" icon={myImg('PKAgAqZWJVNwKsAJSmXd')} style={{ whiteSpace: 'nowrap' }}>My Qrcode</Item>),
-                             (<Item key="6" value="button ct" icon={myImg('uQIYTFeRrjPELImDRrPt')}>
-                                 <span style={{ marginRight: 5 }}>Help</span>
-                             </Item>),
-                         ]}
-                         align={{
-                             overflow: { adjustY: 0, adjustX: 0 },
-                             offset: [-10, 0],
-                         }}
-                         onVisibleChange={this.handleVisibleChange}
-                         onSelect={this.onSelect}
-                >
-                    <div style={{
-                        height: '100%',
-                        padding: '0 15px',
-                        marginRight: '-15px',
-                        display: 'flex',
-                        alignItems: 'center',
-                    }}
-                    >
-                        <Icon type="ellipsis" />
-                    </div>
-                </Popover>
             </View>
         )
-
-        // return <Button>Start</Button>;
-
-        // return (
-        //     <View style={styles.container}>
-        //         <FlatList
-        //             data={this.state.dataList}
-        //             renderItem={this.renderCell}
-        //
-        //             keyExtractor={this.keyExtractor}
-        //             onRefresh={this.requestData}
-        //             refreshing={this.state.refreshing}
-        //
-        //             ListHeaderComponent={this.renderHeader}
-        //         />
-        //     </View>
-        // )
     }
 }
 
@@ -312,6 +305,15 @@ const styles = StyleSheet.create({
         width: 20,
         height: 20,
         margin: 5,
+    },
+    navHeader:{
+        backgroundColor: color.primary,
+        flex:1,
+        flexDirection: 'row',
+    },
+    rtIcon:{
+        width: screen.width / 15,
+        height: screen.width / 10,
     }
 })
 
