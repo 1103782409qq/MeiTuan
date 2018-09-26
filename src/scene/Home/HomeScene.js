@@ -2,22 +2,31 @@
  * Copyright (c) 2017-present, Liu Jinyong
  * All rights reserved.
  *
- * https://github.com/huanxsd/MeiTuan 
+ * https://github.com/huanxsd/MeiTuan
  * @flow
  */
 
 
-import React, {Component,PureComponent} from 'react'
-import {View, Button, StyleSheet, ScrollView, TouchableOpacity, ListView, Image,Text, StatusBar, FlatList} from 'react-native'
+import React, {Component, PureComponent} from 'react'
+import {
+    View,
+    Button,
+    StyleSheet,
+    ScrollView,
+    TouchableOpacity,
+    ListView,
+    Image,
+    Text,
+    StatusBar,
+    FlatList
+} from 'react-native'
 
 import {Heading2, Heading3, Paragraph} from '../../widget/Text'
 import {color, NavigationItem, SpacingView} from '../../widget'
 
 import {screen, system} from '../../common'
 import api from '../../api'
-
-import { NoticeBar, Popover,SearchBar, SegmentedControl } from 'antd-mobile';
-
+import IoniconsIcon from 'react-native-vector-icons/Ionicons';
 import HomeMenuView from './HomeMenuView'
 import HomeGridView from './HomeGridView'
 import GroupPurchaseCell from '../GroupPurchase/GroupPurchaseCell'
@@ -25,9 +34,8 @@ import SplashScreen from "rn-splash-screen";
 import RNPopoverMenu from 'react-native-popover-menu';
 
 import Icon from 'react-native-vector-icons'
-const Item = Popover.Item;
-
-
+import PayCode from "./PayCode";
+import QrCodeScanner from "./QrCodeScanner";
 type Props = {
     navigation: any,
 }
@@ -36,66 +44,25 @@ type State = {
     discounts: Array<Object>,
     dataList: Array<Object>,
     refreshing: boolean,
-    adress:string
+    adress: string
 }
-
-{/*<NavigationItem*/}
-    {/*icon={require('../../img/mine/icon_navigation_item_message_white.png')}*/}
-    {/*onPress={() => {*/}
-        {/*alert(2)*/}
-    {/*}}*/}
-{/*/>*/}
-{/*<View style={styles.container}>*/}
-    {/*<Button ref="btn"*/}
-    {/*onPress={this.onShowPopover}*/}
-    {/*title="Learn More"*/}
-    {/*color="#841584"*/}
-    {/*accessibilityLabel="Learn more about this purple button"*/}
-    {/*/>*/}
-    {/*<FlatList*/}
-        {/*data={this.state.dataList}*/}
-        {/*renderItem={this.renderCell}*/}
-
-        {/*keyExtractor={this.keyExtractor}*/}
-        {/*onRefresh={this.requestData}*/}
-        {/*refreshing={this.state.refreshing}*/}
-
-        {/*ListHeaderComponent={this.renderHeader}*/}
-    {/*/>*/}
-{/*</View>*/}
-{/*<Popover.Item*/}
-    {/*key="6"*/}
-    {/*value="button ct"*/}
-    {/*icon='https://gw.alipayobjects.com/zos/rmsportal/tOtXhkIWzwotgGSeptou.svg'*/}
-    {/*style={{ backgroundColor: "#efeff4" ,marginLeft:100}}*/}
-{/*>*/}
-    {/*<Text>关闭</Text>*/}
-{/*</Popover.Item>*/}
-const myImg = src => <img src={`https://gw.alipayobjects.com/zos/rmsportal/${src}.svg`} className="am-icon am-icon-xs" alt="" />;
-
-
 class HomeScene extends PureComponent<Props, State> {
     static navigationOptions = ({navigation}: any) => ({
         headerTitle: (
             <TouchableOpacity style={styles.searchBar}>
-                <Image source={require('../../img/home/search_icon.png')} style={styles.searchIcon} />
+                <Image source={require('../../img/home/search_icon.png')} style={styles.searchIcon}/>
                 <Paragraph>一点点
                 </Paragraph>
             </TouchableOpacity>
         ),
 
         headerRight: (
-            <Button ref="btn"
-                    onPress={()=>navigation.state.params._onShowPopover()}
-                    title="Learn More"
-                    color="#841584"
-                    accessibilityLabel="Learn more about this purple button"
-            />
-
-),
+            <IoniconsIcon  style={styles.ionAdd} name="ios-add" color="#8B8B90" size={20} onPress={() => navigation.state.params._onShowPopover()}/>
+        ),
         headerLeft: (
+
             <NavigationItem
-                title={navigation.state.params?navigation.state.params.name:'福州'}
+                title={navigation.state.params ? navigation.state.params.name : '福州'}
                 titleStyle={{color: 'white'}}
                 onPress={() => {
                     navigation.navigate('SelectCity')
@@ -103,7 +70,6 @@ class HomeScene extends PureComponent<Props, State> {
             />
         ),
         headerStyle: {backgroundColor: color.primary},
-        // header:null
     })
 
     constructor(props: Props) {
@@ -113,13 +79,17 @@ class HomeScene extends PureComponent<Props, State> {
             discounts: [],
             dataList: [],
             refreshing: false,
-            adress:'福州'
+            adress: '福州'
         }
 
     }
 
     componentDidMount() {
-        this.props.navigation.setParams({ _onShowPopover:this.onShowPopover })
+        if(!this.props.navigation.state.params){
+            this.props.navigation.setParams({name: '福州',_onShowPopover: this.onShowPopover})
+        }else{
+            this.props.navigation.setParams({name: this.props.navigation.state.params.name,_onShowPopover: this.onShowPopover})
+        }
         this.requestData()
         setTimeout(() => {
             SplashScreen.hide();
@@ -191,10 +161,10 @@ class HomeScene extends PureComponent<Props, State> {
     renderHeader = () => {
         return (
             <View>
-                <HomeMenuView menuInfos={api.menuInfo} onMenuSelected={this.onMenuSelected} />
-                <SpacingView />
-                <HomeGridView infos={this.state.discounts} onGridSelected={(this.onGridSelected)} />
-                <SpacingView />
+                <HomeMenuView menuInfos={api.menuInfo} onMenuSelected={this.onMenuSelected}/>
+                <SpacingView/>
+                <HomeGridView infos={this.state.discounts} onGridSelected={(this.onGridSelected)}/>
+                <SpacingView/>
                 <View style={styles.recommendHeader}>
                     <TouchableOpacity onPress={this.onGridSelected}>
                         <Heading3>猜你喜欢</Heading3>
@@ -212,92 +182,62 @@ class HomeScene extends PureComponent<Props, State> {
         //
         //     let location = discount.tplurl.indexOf('http')
         //     let url = discount.tplurl.slice(location)
-            this.props.navigation.navigate('Web', {url: 'http://www.baidu.com'})
+        this.props.navigation.navigate('Web', {url: 'http://www.baidu.com'})
         // }
     }
 
     onMenuSelected = (index: number) => {
         alert(index)
     }
-    onShowPopover = ()=>{
-//         let copy = <Icon family={'FontAwesome'} name={'copy'} color={'#000000'} size={30} />
-//         let paste = <Icon family={'FontAwesome'} name={'paste'} color={'#000000'} size={30} />
-//         let share = <Icon family={'FontAwesome'} name={'share'} color={'#000000'} size={30} />
-//
-//         let menus = [
-//             {
-//                 label: "Editing",
-//                 menus: [
-//                     { label: "Copy", icon: copy },
-//                     { label: "Paste", icon: paste }
-//                 ]
-//             },
-//             {
-//                 label: "Other",
-//                 menus: [
-//                     { label: "Share", icon: share }
-//                 ]
-//             },
-//             {
-//                 label: "",
-//                 menus: [
-//                     { label: "Share me please" }
-//                 ]
-//             }
-//         ]
-//         // debugger
-// console.log(this.refs.btn)
-//         RNPopoverMenu.Show(this.refs.btn, {
-//             title: "",
-//             menus: menus,
-//             onDone: selection => { },
-//             onCancel: () => { }
-//         });
-        this.refs["Popover"].menuContextRef.openMenu(
-            "m"
-        );
-    }
-    state = {
-        value: '',
+    onShowPopover = () => {
+        let copy = <Icon family={'Ionicons'} name={'ios-qr-scanner'} color={'#000000'} size={30}/>
+        let paste = <Icon family={'FontAwesome'} name={'paypal'} color={'#000000'} size={30}/>
+        let share = <Icon family={'FontAwesome'} name={'share'} color={'#000000'} size={30}/>
+
+        let menus = [
+            {
+                label: "Editing",
+                menus: [
+                    {label: "扫一扫", icon: copy},
+                    {label: "付款码", icon: paste}
+                ]
+            },
+        ]
+        RNPopoverMenu.Show(this.refs.btn, {
+            title: "",
+            menus: menus,
+            onDone: selection => {
+                if(selection==0){
+                    this.props.navigation.navigate('QrCodeScanner')
+                }
+                if(selection==1){
+                    this.props.navigation.navigate('PayCode')
+                }
+
+            },
+            onCancel: () => {
+            }
+        });
     }
 
-    onScrollChange = (value) => {
-        console.log(value)
-    }
 
-    handleClick = () => {
-        this.manualFocusInst.focus()
-    }
 
-    clear = () => {
-        this.setState({ value: '' })
-    }
 
     render() {
         return (
-            <View                     style={{ backgroundColor: "#eee" ,position:'absolute',top:0,right:0}}
-            >
-                <Popover
-                    name={"m"}
-                    ref={"Popover"}
-                    mask
-                    overlayClassName="fortest"
-                    overlayStyle={{ color: 'currentColor' }}
-                    overlay={[
-                        (<Item key="4" value="scan" icon={myImg('tOtXhkIWzwotgGSeptou')} data-seed="logId"><Text>Scan</Text></Item>),
-                        (<Item key="5" value="special" icon={myImg('PKAgAqZWJVNwKsAJSmXd')} ><Text>My Qrcode</Text></Item>),
-                        (<Item key="6" value="button ct" icon={myImg('uQIYTFeRrjPELImDRrPt')}>
-                            <Text>Help</Text>
-                        </Item>),
-                    ]}
-                    align={{
-                        overflow: { adjustY: 0, adjustX: 0 },
-                        offset: [-10, 0],
-                    }}
-                >
-                </Popover>
-            </View>
+            <View style={styles.container}>
+                <Text ref="btn" style={styles.popBtn}>aaaa</Text>
+                <FlatList
+                    data={this.state.dataList}
+                    renderItem={this.renderCell}
 
+                    keyExtractor={this.keyExtractor}
+                    onRefresh={this.requestData}
+                    refreshing={this.state.refreshing}
+
+                    ListHeaderComponent={this.renderHeader}
+                />
+            </View>
         )
     }
 }
@@ -348,14 +288,26 @@ const styles = StyleSheet.create({
         height: 20,
         margin: 5,
     },
-    navHeader:{
+    navHeader: {
         backgroundColor: color.primary,
-        flex:1,
+        flex: 1,
         flexDirection: 'row',
     },
-    rtIcon:{
+    rtIcon: {
         width: screen.width / 15,
         height: screen.width / 10,
+    },
+    popBtn: {
+        position: "absolute",
+        top: 0,
+        right: 0,
+        width: 0,
+        height: 0,
+    },
+    ionAdd:{
+        color:'white',
+        fontSize:40,
+        margin: 8,
     }
 })
 

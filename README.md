@@ -223,7 +223,8 @@ Github：https://github.com/huanxsd/MeiTuan
 9.'猜你喜欢'页面是一个页面，嵌入的http链接<br>
 10.ios添加自定义的图标和splash。生成图片教程：https://apetools.webprofusion.com/ 。修改教程https://www.cnblogs.com/lidongxu/p/5114355.html。<br>
 11.选择地区后，返回到首页，改变地区名字，为了做下拉菜单，引入antd-mobile。https://blog.csdn.net/sinat_17775997/article/details/68936093。代码https://www.jianshu.com/p/29e5f259cc9d
-但是之后antd更新，造成上面运行不了，所以pakage.json中版本要改"antd-mobile": "2.0.0"
+但是之后antd更新，造成上面运行不了，所以pakage.json中版本要改"antd-mobile": "2.0.0"。阿里字体图标使用方法，引入过后，<Text style={{fontFamily:'iconfont'}}>&#xe613;</Text>.<br>
+自定义图标库https://github.com/zhengcx/RNIconfont
 12.Could not determine java version from '10.0.1'.修改distributionUrl=https\://services.gradle.org/distributions/gradle-2.4-all.zip，用android studio安装gradle更新就可以了<br>
 13.android修改图标在android\app\src\main\res\mipmap-xxx中直接覆盖图标；splash教程。https://blog.csdn.net/huxinguang_ios/article/details/79892440
 14.https://react.parts可以查组件，React Native 如何使用Ant-design组件库教程https://www.jianshu.com/p/29e5f259cc9d<br>
@@ -235,3 +236,5 @@ headerRight:
     </TouchableOpacity><br>
 16.https://github.com/react-navigation/react-navigation/issues/1772。header的按钮，刷新内容区域
 17.antd popover 链接https://github.com/ant-design/ant-design-mobile-rn/issues/21。
+18.付款码https://github.com/cssivision/react-native-qrcode
+19.https://react.parts/react-native-image-picker?search=camera&collection=React+Native。从相机或者相册修改图片。遇到setState不成功的方法https://github.com/react-community/react-native-image-picker/issues/483。改进this.selectPhotoTapped.bind(this)<br>

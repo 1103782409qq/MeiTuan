@@ -23,6 +23,8 @@ import MineScene from './scene/Mine/MineScene'
 import WebScene from './widget/WebScene'
 import GroupPurchaseScene from './scene/GroupPurchase/GroupPurchaseScene'
 import SelectCity from './scene/SelectCity/SelectCity'
+import PayCode from "./scene/Home/PayCode";
+import QrCodeScanner from "./scene/Home/QrCodeScanner";
 
 const lightContentScenes = ['Home', 'Mine']
 
@@ -147,6 +149,8 @@ const Navigator = StackNavigator(
     {
         Tab: {screen: Tab},
         Web: {screen: WebScene},
+        PayCode: {screen: PayCode},
+        QrCodeScanner: {screen: QrCodeScanner},
         GroupPurchase: {screen: GroupPurchaseScene},
         SelectCity: {screen: SelectCity},
     },
