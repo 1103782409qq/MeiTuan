@@ -162,8 +162,8 @@ class HomeScene extends PureComponent<Props, State> {
         return (
             <View>
                 <HomeMenuView menuInfos={api.menuInfo} onMenuSelected={this.onMenuSelected}/>
-                <SpacingView/>
-                <HomeGridView infos={this.state.discounts} onGridSelected={(this.onGridSelected)}/>
+                {/*<SpacingView/>*/}
+                {/*<HomeGridView infos={this.state.discounts} onGridSelected={(this.onGridSelected)}/>*/}
                 <SpacingView/>
                 <View style={styles.recommendHeader}>
                     <TouchableOpacity onPress={this.onGridSelected}>
