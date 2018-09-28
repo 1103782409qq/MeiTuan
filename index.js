@@ -60,13 +60,13 @@ export default class MeiTuan extends PureComponent<{}> {
         this.setState({ showRealApp: true });
     }
     render() {
-        if (this.state.showRealApp) {
+        // if (this.state.showRealApp) {
             return (
                 <RootScene />
             );
-        } else {
-            return <AppIntroSlider slides={slides} onDone={this._onDone}/>;
-        }
+        // } else {
+        //     return <AppIntroSlider slides={slides} onDone={this._onDone}/>;
+        // }
     }
 }
 

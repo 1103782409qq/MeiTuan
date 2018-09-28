@@ -18,7 +18,7 @@ import {
     Image,
     Text,
     StatusBar,
-    FlatList
+    FlatList,TouchableHighlight
 } from 'react-native'
 
 import {Heading2, Heading3, Paragraph} from '../../widget/Text'
@@ -36,6 +36,8 @@ import RNPopoverMenu from 'react-native-popover-menu';
 import Icon from 'react-native-vector-icons'
 import PayCode from "./PayCode";
 import QrCodeScanner from "./QrCodeScanner";
+import ImageSlider from 'react-native-image-slider';
+
 type Props = {
     navigation: any,
 }
@@ -46,6 +48,7 @@ type State = {
     refreshing: boolean,
     adress: string
 }
+
 class HomeScene extends PureComponent<Props, State> {
     static navigationOptions = ({navigation}: any) => ({
         headerTitle: (
@@ -57,7 +60,8 @@ class HomeScene extends PureComponent<Props, State> {
         ),
 
         headerRight: (
-            <IoniconsIcon  style={styles.ionAdd} name="ios-add" color="#8B8B90" size={20} onPress={() => navigation.state.params._onShowPopover()}/>
+            <IoniconsIcon style={styles.ionAdd} name="ios-add" color="#8B8B90" size={20}
+                          onPress={() => navigation.state.params._onShowPopover()}/>
         ),
         headerLeft: (
 
@@ -85,10 +89,13 @@ class HomeScene extends PureComponent<Props, State> {
     }
 
     componentDidMount() {
-        if(!this.props.navigation.state.params){
-            this.props.navigation.setParams({name: '福州',_onShowPopover: this.onShowPopover})
-        }else{
-            this.props.navigation.setParams({name: this.props.navigation.state.params.name,_onShowPopover: this.onShowPopover})
+        if (!this.props.navigation.state.params) {
+            this.props.navigation.setParams({name: '福州', _onShowPopover: this.onShowPopover})
+        } else {
+            this.props.navigation.setParams({
+                name: this.props.navigation.state.params.name,
+                _onShowPopover: this.onShowPopover
+            })
         }
         this.requestData()
         setTimeout(() => {
@@ -207,10 +214,10 @@ class HomeScene extends PureComponent<Props, State> {
             title: "",
             menus: menus,
             onDone: selection => {
-                if(selection==0){
+                if (selection == 0) {
                     this.props.navigation.navigate('QrCodeScanner')
                 }
-                if(selection==1){
+                if (selection == 1) {
                     this.props.navigation.navigate('PayCode')
                 }
 
@@ -221,12 +228,35 @@ class HomeScene extends PureComponent<Props, State> {
     }
 
 
-
-
     render() {
+        const images = [
+            'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1538055769&di=2e4c7bd99d359f8ba1a4a1b68640d213&src=http://imgsrc.baidu.com/imgad/pic/item/32fa828ba61ea8d3d8d6c33f9c0a304e251f5810.jpg',
+            'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1538065852689&di=bee719de6816348062082133f90c15b3&imgtype=0&src=http%3A%2F%2Fimg.ezfly.com%2Fwhtl%2FWHTL000222474%2F3222604.jpg',
+            'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1538066017852&di=8c162e9e1d2c5fd0b2f57e483a6cf817&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D843574905%2C2376842750%26fm%3D214%26gp%3D0.jpg'
+        ];
         return (
             <View style={styles.container}>
                 <Text ref="btn" style={styles.popBtn}>aaaa</Text>
+                <View style={styles.customSlideView}>
+                    <ImageSlider
+                        loop
+                        autoPlayWithInterval={3000}
+                        images={images}
+                        customSlide={({ index, item, style, width }) => (
+                            // It's important to put style here because it's got offset inside
+                            <View
+                                key={index}
+                                style={[
+                                    style,styles.customSlide
+                                ]}
+                            >
+                                <Image source={{ uri: item }} style={styles.customImage} />
+                            </View>
+                        )}
+
+                    />
+                </View>
+
                 <FlatList
                     data={this.state.dataList}
                     renderItem={this.renderCell}
@@ -304,11 +334,21 @@ const styles = StyleSheet.create({
         width: 0,
         height: 0,
     },
-    ionAdd:{
-        color:'white',
-        fontSize:40,
+    ionAdd: {
+        color: 'white',
+        fontSize: 40,
         margin: 8,
-    }
+    },
+    customSlideView: {
+       height:100
+    },
+    customSlide:{
+
+    },
+    customImage: {
+        width:'100%',
+        height: '100%',
+    },
 })
 
 

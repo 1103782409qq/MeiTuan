@@ -238,3 +238,5 @@ headerRight:
 17.antd popover 链接https://github.com/ant-design/ant-design-mobile-rn/issues/21。
 18.付款码https://github.com/cssivision/react-native-qrcode
 19.https://react.parts/react-native-image-picker?search=camera&collection=React+Native。从相机或者相册修改图片。遇到setState不成功的方法https://github.com/react-community/react-native-image-picker/issues/483。改进this.selectPhotoTapped.bind(this)<br>
+20. https://react.parts/react-native-app-intro-slider?search=slide&collection=React+Native,app启动前的滚动图片
+21.地图定位https://react.parts/react-native-smart-amap-location?search=Location&collection=React+Native
