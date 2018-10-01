@@ -48,7 +48,7 @@ class HomeScene extends PureComponent<Props, State> {
             <NavigationItem
                 icon={require('../../img/mine/icon_navigation_item_message_white.png')}
                 onPress={() => {
-                    alert(2)
+                    navigation.navigate('PayCode')
                 }}
             />
         ),
@@ -178,23 +178,20 @@ class HomeScene extends PureComponent<Props, State> {
     }
 
     render() {
+        return (
+            <View style={styles.container}>
+                <FlatList
+                    data={this.state.dataList}
+                    renderItem={this.renderCell}
 
-        return <Button>Start</Button>;
+                    keyExtractor={this.keyExtractor}
+                    onRefresh={this.requestData}
+                    refreshing={this.state.refreshing}
 
-        // return (
-        //     <View style={styles.container}>
-        //         <FlatList
-        //             data={this.state.dataList}
-        //             renderItem={this.renderCell}
-        //
-        //             keyExtractor={this.keyExtractor}
-        //             onRefresh={this.requestData}
-        //             refreshing={this.state.refreshing}
-        //
-        //             ListHeaderComponent={this.renderHeader}
-        //         />
-        //     </View>
-        // )
+                    ListHeaderComponent={this.renderHeader}
+                />
+            </View>
+        )
     }
 }
 

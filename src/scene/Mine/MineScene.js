@@ -13,19 +13,9 @@ import {View, Text, StyleSheet, StatusBar, Image, TouchableOpacity, TouchableHig
 import {Heading2, Heading3, Paragraph} from '../../widget/Text'
 import {screen, system} from '../../common'
 import {color, DetailCell, NavigationItem, SpacingView} from '../../widget'
-import Toast, {DURATION} from 'react-native-easy-toast';
 
 import ImagePicker from 'react-native-image-picker';
-var options = {
-    title:null,
-    takePhotoButtonTitle:"拍照",
-    cancelButtonTitle:'取消',
-    chooseFromLibraryButtonTitle:'从手机相册选择',
-    storageOptions: {
-        skipBackup: true,
-        path: 'images'
-    }
-};
+
 type Props = {
 
 }
@@ -102,7 +92,6 @@ class MineScene extends PureComponent<Props, State> {
         )
     }
     selectPhotoTapped() {
-        this.refs.toast.show('hello world!');
         const options = {
             title:null,
             takePhotoButtonTitle:"拍照",
@@ -117,7 +106,6 @@ class MineScene extends PureComponent<Props, State> {
         }
 
         ImagePicker.showImagePicker(options, (response) => {
-            this.refs.toast.close()
             console.log('Response = ', response, 'ww', this.state);
 
             if (response.didCancel) {
@@ -173,7 +161,6 @@ class MineScene extends PureComponent<Props, State> {
                     <SpacingView />
                     {this.renderCells()}
                 </ScrollView>
-                <Toast ref="toast" position='top' positionValue={200} fadeInDuration={750} fadeOutDuration={1000} opacity={0.8}/>
             </View>
         )
     }

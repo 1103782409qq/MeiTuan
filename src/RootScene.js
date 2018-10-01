@@ -23,6 +23,7 @@ import MineScene from './scene/Mine/MineScene'
 import WebScene from './widget/WebScene'
 import GroupPurchaseScene from './scene/GroupPurchase/GroupPurchaseScene'
 import SelectCity from './scene/SelectCity/SelectCity'
+import PayCode from "./scene/Home/PayCode";
 
 const lightContentScenes = ['Home', 'Mine']
 
@@ -149,6 +150,7 @@ const Navigator = StackNavigator(
         Web: {screen: WebScene},
         GroupPurchase: {screen: GroupPurchaseScene},
         SelectCity: {screen: SelectCity},
+        PayCode: {screen: PayCode},
     },
     {
         navigationOptions: {
