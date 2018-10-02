@@ -22,6 +22,7 @@ import HomeGridView from './HomeGridView'
 import GroupPurchaseCell from '../GroupPurchase/GroupPurchaseCell'
 import { Button } from 'antd-mobile';
 import SplashScreen from "rn-splash-screen";
+import TakePicture from "./TakePicture";
 
 type Props = {
     navigation: any,
@@ -48,7 +49,7 @@ class HomeScene extends PureComponent<Props, State> {
             <NavigationItem
                 icon={require('../../img/mine/icon_navigation_item_message_white.png')}
                 onPress={() => {
-                    navigation.navigate('PayCode')
+                    navigation.navigate('TakePicture')
                 }}
             />
         ),

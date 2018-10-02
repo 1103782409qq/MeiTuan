@@ -24,6 +24,7 @@ import WebScene from './widget/WebScene'
 import GroupPurchaseScene from './scene/GroupPurchase/GroupPurchaseScene'
 import SelectCity from './scene/SelectCity/SelectCity'
 import PayCode from "./scene/Home/PayCode";
+import TakePicture from "./scene/Home/TakePicture";
 
 const lightContentScenes = ['Home', 'Mine']
 
@@ -151,6 +152,7 @@ const Navigator = StackNavigator(
         GroupPurchase: {screen: GroupPurchaseScene},
         SelectCity: {screen: SelectCity},
         PayCode: {screen: PayCode},
+        TakePicture: {screen: TakePicture},
     },
     {
         navigationOptions: {
