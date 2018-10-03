@@ -3,6 +3,7 @@ package com.meituan;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import cn.qiuxiang.react.geolocation.AMapGeolocationPackage;
 import org.reactnative.camera.RNCameraPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.imagepicker.ImagePickerPackage;
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new AMapGeolocationPackage(),
             new RNCameraPackage(),
             new VectorIconsPackage(),
             new ImagePickerPackage(),

@@ -226,3 +226,6 @@ Github：https://github.com/huanxsd/MeiTuan
 但是之后antd更新，造成上面运行不了，所以pakage.json中版本要改"antd-mobile": "2.0.0"
 12.Could not determine java version from '10.0.1'.修改distributionUrl=https\://services.gradle.org/distributions/gradle-2.4-all.zip，用android studio安装gradle更新就可以了<br>
 13.android修改图标在android\app\src\main\res\mipmap-xxx中直接覆盖图标；splash教程。https://blog.csdn.net/huxinguang_ios/article/details/79892440
+14.真机调试，电脑再也不用运行模拟器了，速度快的很！这下和开发普通非原生app网页差不多了。https://reactnative.cn/docs/0.44/running-on-device-ios/<br>
+15.扫条码https://www.jianshu.com/p/2cef1baf9a6f<br>
+16.高德地图 android的key:3296a2d937e276afdbcc7478aba6caa6。网址。添加插件后，执行link。然后react-native run-android，才能生效。https://github.com/qiuxiang/react-native-amap-geolocation<br>
