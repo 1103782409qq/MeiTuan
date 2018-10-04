@@ -23,6 +23,7 @@ import GroupPurchaseCell from '../GroupPurchase/GroupPurchaseCell'
 import { Button } from 'antd-mobile';
 import SplashScreen from "rn-splash-screen";
 import QrCodeScanner from "./QrCodeScanner";
+import ImageSlider from 'react-native-image-slider';
 
 type Props = {
     navigation: any,
@@ -180,8 +181,32 @@ class HomeScene extends PureComponent<Props, State> {
     }
 
     render() {
+        const images = [
+            'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1538055769&di=2e4c7bd99d359f8ba1a4a1b68640d213&src=http://imgsrc.baidu.com/imgad/pic/item/32fa828ba61ea8d3d8d6c33f9c0a304e251f5810.jpg',
+            'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1538065852689&di=bee719de6816348062082133f90c15b3&imgtype=0&src=http%3A%2F%2Fimg.ezfly.com%2Fwhtl%2FWHTL000222474%2F3222604.jpg',
+            'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1538066017852&di=8c162e9e1d2c5fd0b2f57e483a6cf817&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D843574905%2C2376842750%26fm%3D214%26gp%3D0.jpg'
+        ];
         return (
             <View style={styles.container}>
+                <View style={styles.customSlideView}>
+                    <ImageSlider
+                        loop
+                        autoPlayWithInterval={3000}
+                        images={images}
+                        customSlide={({ index, item, style, width }) => (
+                            // It's important to put style here because it's got offset inside
+                            <View
+                                key={index}
+                                style={[
+                                    style,styles.customSlide
+                                ]}
+                            >
+                                <Image source={{ uri: item }} style={styles.customImage} />
+                            </View>
+                        )}
+
+                    />
+                </View>
                 <FlatList
                     data={this.state.dataList}
                     renderItem={this.renderCell}
@@ -226,7 +251,17 @@ const styles = StyleSheet.create({
         width: 20,
         height: 20,
         margin: 5,
-    }
+    },
+    customSlideView: {
+        height:100
+    },
+    customSlide:{
+
+    },
+    customImage: {
+        width:'100%',
+        height: '100%',
+    },
 })
 
 
