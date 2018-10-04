@@ -229,3 +229,4 @@ Github：https://github.com/huanxsd/MeiTuan
 14.真机调试，电脑再也不用运行模拟器了，速度快的很！这下和开发普通非原生app网页差不多了。https://reactnative.cn/docs/0.44/running-on-device-ios/<br>
 15.扫条码https://www.jianshu.com/p/2cef1baf9a6f<br>
 16.高德地图 android的key:3296a2d937e276afdbcc7478aba6caa6。网址。添加插件后，执行link。然后react-native run-android，才能生效。https://github.com/qiuxiang/react-native-amap-geolocation<br>
+17."react-native-popover": "github:jeanregisser/react-native-popover#8a443d2699b404d55c324edc8536255150340789",popover中修改import PropTypes from 'prop-types';import createReactClass from 'create-react-class';直接拷贝github的readme中的代码即可

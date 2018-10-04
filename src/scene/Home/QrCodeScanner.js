@@ -1,89 +1,72 @@
-import React from "react"
-import { AppRegistry, Button, StyleSheet, Text, View } from "react-native"
-import { Geolocation } from "react-native-amap-geolocation"
+import createReactClass from 'create-react-class';
 
-const style = StyleSheet.create({
-    body: {
-        padding: 16
+var React = require('react');
+var Popover = require('react-native-popover');
+var {
+    AppRegistry,
+    StyleSheet,
+    Text,
+    TouchableHighlight,
+    View,
+} = require('react-native');
+
+var QrCodeScanner = createReactClass({
+    getInitialState() {
+        return {
+            isVisible: false,
+            buttonRect: {},
+        };
     },
-    controls: {
-        flexDirection: "row",
-        justifyContent: "space-around",
-        marginTop: 12,
-        marginBottom: 24
+
+    showPopover() {
+        this.refs.button.measure((ox, oy, width, height, px, py) => {
+            this.setState({
+                isVisible: true,
+                buttonRect: {x: px, y: py, width: width, height: height}
+            });
+        });
     },
-    item: {
-        flexDirection: "row",
-        marginBottom: 4
+
+    closePopover() {
+        this.setState({isVisible: false});
     },
-    label: {
-        color: "#f5533d",
-        width: 120,
-        paddingRight: 10,
-        textAlign: "right"
-    }
-})
-
-class QrCodeScanner extends React.Component {
-    state = { location: {} }
-
-    async componentDidMount() {
-        await Geolocation.init({
-            // ios: "9bd6c82e77583020a73ef1af59d0c759",
-            android: "3296a2d937e276afdbcc7478aba6caa6"
-        })
-        Geolocation.setOptions({
-            interval: 10000,
-            distanceFilter: 10,
-            background: true,
-            reGeocode: true
-        })
-        Geolocation.addLocationListener(location =>
-            this.updateLocationState(location)
-        )
-    }
-
-    componentWillUnmount() {
-        Geolocation.stop()
-    }
-
-    updateLocationState(location) {
-        if (location) {
-            location.timestamp = new Date(location.timestamp).toLocaleString()
-            this.setState({ location })
-            console.log(location)
-        }
-    }
-
-    startLocation = () => Geolocation.start()
-    stopLocation = () => Geolocation.stop()
-    getLastLocation = async () =>
-        this.updateLocationState(await Geolocation.getLastLocation())
 
     render() {
-        const { location } = this.state
         return (
-            <View style={style.body}>
-                <View style={style.controls}>
-                    <Button
-                        style={style.button}
-                        onPress={this.startLocation}
-                        title="开始定位"
-                    />
-                    <Button
-                        style={style.button}
-                        onPress={this.stopLocation}
-                        title="停止定位"
-                    />
-                </View>
-                {Object.keys(location).map(key => (
-                    <View style={style.item} key={key}>
-                        <Text style={style.label}>{key}</Text>
-                        <Text>{location[key]}</Text>
-                    </View>
-                ))}
+            <View style={styles.container}>
+                <TouchableHighlight ref='button' style={styles.button} onPress={this.showPopover}>
+                    <Text style={styles.buttonText}>Press me</Text>
+                </TouchableHighlight>
+
+                <Popover
+                    isVisible={this.state.isVisible}
+                    fromRect={this.state.buttonRect}
+                    onClose={this.closePopover}>
+                    <Text>I'm the content of this popover!</Text>
+                </Popover>
             </View>
-        )
+        );
     }
-}
+});
+
+var styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'rgb(43, 186, 180)',
+    },
+    button: {
+        borderRadius: 4,
+        padding: 10,
+        marginLeft: 10,
+        marginRight: 10,
+        backgroundColor: '#ccc',
+        borderColor: '#333',
+        borderWidth: 1,
+    },
+    buttonText: {
+    }
+});
+
 export default QrCodeScanner

@@ -21,6 +21,7 @@
     "react-native-image-picker": "^0.26.10",
     "react-native-image-slider": "^2.0.3",
     "react-native-page-control": "^1.1.1",
+    "react-native-popover": "github:jeanregisser/react-native-popover#8a443d2699b404d55c324edc8536255150340789",
     "react-native-qrcode": "^0.2.7",
     "react-native-refresh-list-view": "^1.0.6",
     "react-native-scrollable-tab-view": "^0.8.0",
