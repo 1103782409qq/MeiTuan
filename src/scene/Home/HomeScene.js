@@ -74,7 +74,8 @@ class HomeScene extends PureComponent<Props, State> {
             refreshing: false,
             adress:'福州'
         }
-
+        console.disableYellowBox = true;
+        console.warn('YellowBox is disabled.');
     }
 
     componentDidMount() {

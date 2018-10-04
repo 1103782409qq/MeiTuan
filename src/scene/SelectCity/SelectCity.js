@@ -1,30 +1,21 @@
 'use strict';
 import React, {Component} from 'react';
 import {
-    Alert,
     View,
-    Text,
-    TextInput,
     StyleSheet,
-    Platform,
-    NavigatorIOS,
-    TouchableOpacity,
-    StatusBar,
-    ScrollView
 } from 'react-native';
 
-import Header from './Header';
 import SearchBox from './SearchBox';
 import SearchResult from './SearchResult';
 
 import CityList from './IndexListView';
+import { Geolocation } from "react-native-amap-geolocation"
 
 // 下面是数据部分
 import DATA_JSON from './city-list.json';
-import HomeScene from "../Home/HomeScene";
 const NOW_CITY_LIST = [
     {
-        "name": "阿里",
+        "name": "正在定位...",
         "spellName": "alidi",
         "id": 6134,
         "fullname": "西藏/阿里",
@@ -36,6 +27,39 @@ const HOT_CITY_LIST = DATA_JSON.hotCityList;
 const LAST_VISIT_CITY_LIST = DATA_JSON.lastVisitCityList;
 
 export default class SimpleSelectCity extends Component {
+    state = { location: {} }
+    async componentDidMount() {
+        await Geolocation.init({
+            // ios: "9bd6c82e77583020a73ef1af59d0c759",
+            android: "3296a2d937e276afdbcc7478aba6caa6"
+        })
+        Geolocation.setOptions({
+            interval: 10000,
+            distanceFilter: 10,
+            background: true,
+            reGeocode: true
+        })
+        Geolocation.addLocationListener(location =>
+            this.updateLocationState(location)
+        )
+        this.startLocation()
+    }
+
+    componentWillUnmount() {
+
+        Geolocation.stop()
+    }
+
+    updateLocationState(location) {
+        if (location) {
+            location.timestamp = new Date(location.timestamp).toLocaleString()
+            this.setState({ location })
+            console.log(location)
+            this.state.nowCityList[0].name=location.city
+        }
+    }
+
+    startLocation = () => Geolocation.start()
     constructor(props) {
         super(props);
         this.state = {
@@ -89,6 +113,7 @@ export default class SimpleSelectCity extends Component {
     }
 
     render() {
+
         return (
             <View style={styles.container}>
                 <SearchBox
@@ -130,5 +155,15 @@ const styles = StyleSheet.create({
     },
     currentCityText: {
         fontSize: 16
+    },
+    item: {
+        flexDirection: "row",
+        marginBottom: 4
+    },
+    label: {
+        color: "#f5533d",
+        width: 120,
+        paddingRight: 10,
+        textAlign: "right"
     }
 });
