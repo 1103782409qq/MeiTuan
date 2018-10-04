@@ -42,6 +42,7 @@
 		575EC4D21AE2419C81562221 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99812848AB4A41D7A838BBB9 /* iconfont.ttf */; };
 		C193C37E4FFD4235B97D422F /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EDEC3C8986C44CFB7CCFB63 /* MaterialCommunityIcons.ttf */; };
 		6A33F9E77ED14CB297125411 /* libRNCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A9C54B46534D23942FBCDD /* libRNCamera.a */; };
+		CC47E35A478A482596E05A44 /* libRNPopoverMenu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D21F62BDD8E49219716523F /* libRNPopoverMenu.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -354,6 +355,8 @@
 		8EDEC3C8986C44CFB7CCFB63 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; name = "MaterialCommunityIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		4D5D0832FF6C4132A16B9AB4 /* RNCamera.xcodeproj */ = {isa = PBXFileReference; name = "RNCamera.xcodeproj"; path = "../node_modules/react-native-camera/ios/RNCamera.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		D4A9C54B46534D23942FBCDD /* libRNCamera.a */ = {isa = PBXFileReference; name = "libRNCamera.a"; path = "libRNCamera.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		4495D07861D74BA8BFD7CAC1 /* RNPopoverMenu.xcodeproj */ = {isa = PBXFileReference; name = "RNPopoverMenu.xcodeproj"; path = "../node_modules/react-native-popover-menu/ios/RNPopoverMenu.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		8D21F62BDD8E49219716523F /* libRNPopoverMenu.a */ = {isa = PBXFileReference; name = "libRNPopoverMenu.a"; path = "libRNPopoverMenu.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -378,6 +381,7 @@
 				12C2F88EE4AD47E9813D11B5 /* libRCTSplashScreen.a in Frameworks */,
 				B38996BDF347466EB02733A7 /* libRNImagePicker.a in Frameworks */,
 				6A33F9E77ED14CB297125411 /* libRNCamera.a in Frameworks */,
+				CC47E35A478A482596E05A44 /* libRNPopoverMenu.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,6 +564,7 @@
 				155FE570778B4E5D92DE35A6 /* RCTSplashScreen.xcodeproj */,
 				774CE07D15C54653B57F7198 /* RNImagePicker.xcodeproj */,
 				4D5D0832FF6C4132A16B9AB4 /* RNCamera.xcodeproj */,
+				4495D07861D74BA8BFD7CAC1 /* RNPopoverMenu.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1087,11 +1092,13 @@
 					"$(SRCROOT)/../node_modules/rn-splash-screen/ios/RCTSplashScreen",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-popover-menu/ios/**",
 				);
 				INFOPLIST_FILE = MeiTuan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
@@ -1123,11 +1130,13 @@
 					"$(SRCROOT)/../node_modules/rn-splash-screen/ios/RCTSplashScreen",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-popover-menu/ios/**",
 				);
 				INFOPLIST_FILE = MeiTuan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",

@@ -3,6 +3,7 @@ package com.meituan;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import ui.popovermenu.RNPopoverMenuPackage;
 import cn.qiuxiang.react.geolocation.AMapGeolocationPackage;
 import org.reactnative.camera.RNCameraPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -27,6 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNPopoverMenuPackage(),
             new AMapGeolocationPackage(),
             new RNCameraPackage(),
             new VectorIconsPackage(),
