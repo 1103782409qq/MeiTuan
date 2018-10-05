@@ -11,12 +11,12 @@ import {
 import RNPopover from 'react-native-popover-menu'
 import Icon from "react-native-vector-icons/FontAwesome";
 
-import Top from "./PopoverMenu/components/Top";
-import Center from "./PopoverMenu/components/Center";
-import Bottom from "./PopoverMenu/components/Bottom";
+import Top from "./components/Top";
+import Center from "./components/Center";
+import Bottom from "./components/Bottom";
 
 
-export default class QrCodeScanner extends Component<{}> {
+export default class PopoverMenu extends Component<{}> {
     constructor (props) {
         super(props)
 
@@ -40,7 +40,7 @@ export default class QrCodeScanner extends Component<{}> {
                     },
                     {
                         label: "Paste",
-                        icon: 'paste.png'
+                        icon: paste
                     },
                     {
                         label: "Share",
@@ -137,7 +137,7 @@ export default class QrCodeScanner extends Component<{}> {
             </RNPopover>;
         }
 
-        return <ImageBackground source={require("./PopoverMenu/assets/dark.jpg")} style={styles.backgroundImage}>
+        return <ImageBackground source={require("./assets/dark.jpg")} style={styles.backgroundImage}>
             <Top style={styles.top} onPress={ref => {
                 this._onPress(ref);
                 // this._show(ref);

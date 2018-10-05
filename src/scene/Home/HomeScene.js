@@ -24,6 +24,10 @@ import { Button } from 'antd-mobile';
 import SplashScreen from "rn-splash-screen";
 import QrCodeScanner from "./QrCodeScanner";
 import ImageSlider from 'react-native-image-slider';
+import IoniconsIcon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons'
+import RNPopoverMenu from 'react-native-popover-menu';
+import PopoverMenu from "./PopoverMenu/PopoverMenu";
 
 type Props = {
     navigation: any,
@@ -47,12 +51,8 @@ class HomeScene extends PureComponent<Props, State> {
             </TouchableOpacity>
         ),
         headerRight: (
-            <NavigationItem
-                icon={require('../../img/mine/icon_navigation_item_message_white.png')}
-                onPress={() => {
-                    navigation.navigate('QrCodeScanner')
-                }}
-            />
+            <IoniconsIcon  style={styles.ionAdd} name="ios-add" color="#8B8B90" size={20} onPress={() => navigation.state.params._onShowPopover()}/>
+
         ),
         headerLeft: (
             <NavigationItem
@@ -80,12 +80,45 @@ class HomeScene extends PureComponent<Props, State> {
     }
 
     componentDidMount() {
+        if(!this.props.navigation.state.params){
+            this.props.navigation.setParams({name: '福州',_onShowPopover: this.onShowPopover})
+        }else{
+            this.props.navigation.setParams({name: this.props.navigation.state.params.name,_onShowPopover: this.onShowPopover})
+        }
         this.requestData()
         setTimeout(() => {
             SplashScreen.hide();
         }, 2000);//延时2秒消失
     }
+    onShowPopover = () => {
+        let copy = <Icon family={'Ionicons'} name={'ios-qr-scanner'} color={'#000000'} size={30}/>
+        let paste = <Icon family={'FontAwesome'} name={'paypal'} color={'#000000'} size={30}/>
+        let share = <Icon family={'FontAwesome'} name={'share'} color={'#000000'} size={30}/>
 
+        let menus = [
+            {
+                menus: [
+                    {label: "扫一扫", icon: copy},
+                    {label: "付款码", icon: paste}
+                ]
+            },
+        ]
+        RNPopoverMenu.Show(this.refs.btn, {
+            title: "",
+            menus: menus,
+            onDone: selection => {
+                if(selection==0){
+                    this.props.navigation.navigate('QrCodeScanner')
+                }
+                if(selection==1){
+                    this.props.navigation.navigate('PayCode')
+                }
+
+            },
+            onCancel: () => {
+            }
+        });
+    }
     requestData = () => {
         this.setState({refreshing: true})
         // 折扣内容，没值
@@ -189,6 +222,8 @@ class HomeScene extends PureComponent<Props, State> {
         return (
             <View style={styles.container}>
                 <View style={styles.customSlideView}>
+                    <Text ref="btn" style={styles.popBtn}>aaaa</Text>
+
                     <ImageSlider
                         loop
                         autoPlayWithInterval={3000}
@@ -262,6 +297,18 @@ const styles = StyleSheet.create({
         width:'100%',
         height: '100%',
     },
+    popBtn: {
+        position: "absolute",
+        top: 0,
+        right: 0,
+        width: 0,
+        height: 0,
+    },
+    ionAdd:{
+        color:'white',
+        fontSize:40,
+        margin: 8,
+    }
 })
 
 
