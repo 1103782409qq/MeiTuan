@@ -1,178 +1,59 @@
 import React, { Component } from 'react';
+
 import {
-    Platform,
+    AppRegistry,
     StyleSheet,
     Text,
-    View,
-    TouchableHighlight,
-    ImageBackground
-} from "react-native";
+    TouchableOpacity,
+    Linking,
+} from 'react-native';
+import QRCodeScanner from 'react-native-qrcode-scanner';
 
-import RNPopover from 'react-native-popover-menu'
-import Icon from "react-native-vector-icons/FontAwesome";
+class QrCodeScanner extends Component{
 
-import Top from "./PopoverMenu/components/Top";
-import Center from "./PopoverMenu/components/Center";
-import Bottom from "./PopoverMenu/components/Bottom";
-
-
-export default class QrCodeScanner extends Component<{}> {
-    constructor (props) {
-        super(props)
-
-        this.state = {
-            visible: false
-        }
-    }
-
-    _onPress = (ref) => {
-        let copy = <Icon name="copy" size={30} color="#000000" family={"FontAwesome"} />;
-        let paste = <Icon name="paste" size={30} color="#000000" family={"FontAwesome"} />;
-        let share = <Icon name="share" size={30} color="#000000" family={"FontAwesome"} />;
-
-        let meunsIOS =
-            [{
-                label: "Editing",
-                menus: [
-                    {
-                        label: "Copy",
-                        icon: copy
-                    },
-                    {
-                        label: "Paste",
-                        icon: 'paste.png'
-                    },
-                    {
-                        label: "Share",
-                        icon: share
-                    },
-                    {
-                        label: "Share me please"
-                    }
-                ]
-            }]
-
-        let menusAndroid = [
-            {
-                label: "Editing",
-                menus: [
-                    {
-                        label: "Copy",
-                        icon: copy
-                    },
-                    {
-                        label: "Paste",
-                        icon: paste
-                    }
-                ]
-            },
-            {
-                label: "Other",
-                menus: [
-                    {
-                        label: "Share",
-                        icon: share
-                    }
-                ]
-            },
-            {
-                label: "",
-                menus: [
-                    {
-                        label: "Share me please"
-                    }
-                ]
-            }
-        ]
-
-        let menus
-        if (Platform.OS === 'android') {
-            menus = menusAndroid;
-        } else if (Platform.OS === 'ios') {
-            menus = meunsIOS;
-        }
-
-        RNPopover.Show(ref, { menus: menus, onDone: selection => {
-                console.log("selected item index: " + selection);
-            }, onCancel: () => {
-                console.log("popover canceled");
-            }, tintColor: "#888888", textColor: "#FFFFFF" });
-    }
-
-    _show (ref) {
-        this.ref = ref
-
-        this.setState({
-            visible: true
-        })
+    onSuccess(e) {
+        Linking
+            .openURL(e.data)
+            .catch(err => console.error('An error occured', err));
     }
 
     render() {
-        let copy = <Icon name="copy" size={30} color="#000000" family={"FontAwesome"} />;
-        let paste = <Icon name="paste" size={30} color="#000000" family={"FontAwesome"} />;
-        let share = <Icon name="share" size={30} color="#000000" family={"FontAwesome"} />;
-
-        let popover;
-        if (Platform.OS === 'android') {
-            popover = <RNPopover visible={this.state.visible} reference={this.ref} onDone={(mainMenuSelection, subMenuSelection) => {
-                console.log("selection: " + mainMenuSelection + ", " + subMenuSelection);
-            }}>
-                <RNPopover.Menu label={"Editing"}>
-                    <RNPopover.Menu label={"Copy"} icon={copy} />
-                    <RNPopover.Menu label={"Paste"} icon={paste} />
-                </RNPopover.Menu>
-                <RNPopover.Menu>
-                    <RNPopover.Menu label={"Share"} icon={share} />
-                </RNPopover.Menu>
-            </RNPopover>;
-        } else if (Platform.OS === 'ios') {
-            popover = <RNPopover visible={this.state.visible} reference={this.ref} onDone={(selection) => {
-                console.log("selection: " + selection);
-            }} >
-                <RNPopover.Menu label={"Editing"}>
-                    <RNPopover.Menu label={"Copy"} icon={copy} />
-                    <RNPopover.Menu label={"Paste"} icon={paste} />
-                    <RNPopover.Menu label={"Share"} icon={share} />
-                </RNPopover.Menu>
-            </RNPopover>;
-        }
-
-        return <ImageBackground source={require("./PopoverMenu/assets/dark.jpg")} style={styles.backgroundImage}>
-            <Top style={styles.top} onPress={ref => {
-                this._onPress(ref);
-                // this._show(ref);
-            }} />
-            <Center style={styles.center} onPress={ref => {
-                this._onPress(ref);
-                // this._show(ref);
-            }} />
-            <Bottom style={styles.bottom} onPress={ref => {
-                this._onPress(ref);
-                // this._show(ref);
-            }} />
-            {popover}
-        </ImageBackground>;
+        return (
+            <QRCodeScanner
+                onRead={this.onSuccess.bind(this)}
+                topContent={
+                    <Text style={styles.centerText}>
+                        Go to <Text style={styles.textBold}>wikipedia.org/wiki/QR_code</Text> on your computer and scan the QR code.
+                    </Text>
+                }
+                bottomContent={
+                    <TouchableOpacity style={styles.buttonTouchable}>
+                        <Text style={styles.buttonText}>OK. Got it!</Text>
+                    </TouchableOpacity>
+                }
+            />
+        );
     }
 }
 
 const styles = StyleSheet.create({
-    backgroundImage: {
+    centerText: {
         flex: 1,
-        width: null,
-        height: null,
-        flexDirection: "column",
-        justifyContent: "space-between"
+        fontSize: 18,
+        padding: 32,
+        color: '#777',
     },
-    textStyle: {
-        color: "#FFFFFF"
+    textBold: {
+        fontWeight: '500',
+        color: '#000',
     },
-    top: {
-        flex: 1
+    buttonText: {
+        fontSize: 21,
+        color: 'rgb(0,122,255)',
     },
-    center: {
-        flex: 1
+    buttonTouchable: {
+        padding: 16,
     },
-    bottom: {
-        flex: 1
-    }
 });
+
+export default QrCodeScanner
