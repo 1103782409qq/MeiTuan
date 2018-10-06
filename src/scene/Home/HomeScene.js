@@ -106,11 +106,11 @@ class HomeScene extends PureComponent<Props, State> {
         RNPopoverMenu.Show(this.refs.btn, {
             title: "",
             menus: menus,
-            onDone: selection => {
-                if(selection==0){
+            onDone: (sectionSelection, menuSelection) => {
+                if(menuSelection==0){
                     this.props.navigation.navigate('QrCodeScanner')
                 }
-                if(selection==1){
+                if(menuSelection==1){
                     this.props.navigation.navigate('PayCode')
                 }
 
