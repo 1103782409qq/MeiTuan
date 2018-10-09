@@ -103,6 +103,11 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+        manifestPlaceholders = [
+                JPUSH_APPKEY: "86d83c724c46c1f7531e618d",
+                APP_CHANNEL : "default"
+        ]
+
         multiDexEnabled true
         ndk {
             abiFilters "armeabi-v7a", "x86"
@@ -151,6 +156,8 @@ android {
 }
 
 dependencies {
+    compile project(':jcore-react-native')
+    compile project(':jpush-react-native')
     compile project(':react-native-amap3d')
     compile project(':react-native-popover-menu')
     compile project(':react-native-amap-geolocation')

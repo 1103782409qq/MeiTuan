@@ -27,7 +27,7 @@ import ImageSlider from 'react-native-image-slider';
 import IoniconsIcon from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons'
 import RNPopoverMenu from 'react-native-popover-menu';
-
+import JPushModule from 'jpush-react-native';
 type Props = {
     navigation: any,
 }
@@ -88,7 +88,38 @@ class HomeScene extends PureComponent<Props, State> {
         setTimeout(() => {
             SplashScreen.hide();
         }, 2000);//延时2秒消失
+
+        JPushModule.notifyJSDidLoad((resultCode) => {
+            if (resultCode === 0) {
+            }
+            console.log('启动时候打印')
+        });
+
+        // 接收自定义消息
+        JPushModule.addReceiveCustomMsgListener((message) => {
+            this.setState({pushMsg: message});
+            alert(1)
+        });
+        // 接收推送通知
+        JPushModule.addReceiveNotificationListener((message) => {
+            console.log("receive notification: " + message);
+            alert(2)
+        });
+        // 打开通知
+        JPushModule.addReceiveOpenNotificationListener((map) => {
+            console.log("Opening notification!");
+            console.log("map.extra: " + map.extras);
+            alert(3)
+            // 可执行跳转操作，也可跳转原生页面
+            this.props.navigation.navigate("SelectCity");
+        });
     }
+    componentWillUnmount() {
+        JPushModule.removeReceiveCustomMsgListener();
+        JPushModule.removeReceiveNotificationListener();
+    }
+
+
     onShowPopover = () => {
         let copy = <Icon family={'Ionicons'} name={'ios-qr-scanner'} color={'#000000'} size={30}/>
         let paste = <Icon family={'FontAwesome'} name={'paypal'} color={'#000000'} size={30}/>

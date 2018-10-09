@@ -17,8 +17,12 @@ import com.facebook.soloader.SoLoader;
 
 import java.util.Arrays;
 import java.util.List;
+import cn.jpush.reactnativejpush.JPushPackage;
 public class MainApplication extends Application implements ReactApplication {
-
+   // 设置为true将不弹出toast
+    private boolean SHUTDOWN_TOAST = false;
+    // 设置为true将不打印log
+    private boolean SHUTDOWN_LOG = false;
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
     @Override
     public boolean getUseDeveloperSupport() {
@@ -35,7 +39,8 @@ public class MainApplication extends Application implements ReactApplication {
             new RNCameraPackage(),
             new VectorIconsPackage(),
             new ImagePickerPackage(),
-            new SplashScreenPackage()
+            new SplashScreenPackage(),
+            new JPushPackage(SHUTDOWN_TOAST, SHUTDOWN_LOG)
       );
     }
 
