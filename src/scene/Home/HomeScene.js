@@ -27,7 +27,6 @@ import ImageSlider from 'react-native-image-slider';
 import IoniconsIcon from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons'
 import RNPopoverMenu from 'react-native-popover-menu';
-import PopoverMenu from "./PopoverMenu/PopoverMenu";
 
 type Props = {
     navigation: any,

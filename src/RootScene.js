@@ -27,6 +27,7 @@ import PayCode from "./scene/Home/PayCode";
 import TakePicture from "./scene/Home/TakePicture";
 import QrCodeScanner from "./scene/Home/QrCodeScanner";
 import PopoverMenu from "./scene/Home/PopoverMenu/PopoverMenu";
+import Map3D from "./scene/Nearby/Map3D";
 
 const lightContentScenes = ['Home', 'Mine']
 
@@ -157,6 +158,7 @@ const Navigator = StackNavigator(
         TakePicture: {screen: TakePicture},
         QrCodeScanner: {screen: QrCodeScanner},
         PopoverMenu: {screen: PopoverMenu},
+        Map3D: {screen: Map3D},
     },
     {
         navigationOptions: {
