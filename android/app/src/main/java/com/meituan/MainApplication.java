@@ -3,6 +3,7 @@ package com.meituan;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import cn.qiuxiang.react.amap3d.AMap3DPackage;
 import ui.popovermenu.RNPopoverMenuPackage;
 import cn.qiuxiang.react.geolocation.AMapGeolocationPackage;
 import org.reactnative.camera.RNCameraPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new AMap3DPackage(),
             new RNPopoverMenuPackage(),
             new AMapGeolocationPackage(),
             new RNCameraPackage(),
@@ -53,4 +55,6 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
   }
+
+
 }
