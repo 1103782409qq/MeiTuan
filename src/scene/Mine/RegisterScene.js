@@ -15,8 +15,6 @@ import {screen, system} from '../../common'
 import {color, DetailCell, NavigationItem, SpacingView} from '../../widget'
 
 import ImagePicker from 'react-native-image-picker';
-import SplashScreen from "rn-splash-screen";
-import JPushModule from "jpush-react-native";
 
 type Props = {
 
@@ -27,30 +25,10 @@ type State = {
     avatarSource:string
 }
 
-class MineScene extends PureComponent<Props, State> {
-
+export default class RegisterScene extends PureComponent<Props, State> {
     static navigationOptions = ({navigation}: any) => ({
-        headerRight: (
-            <View style={{flexDirection: 'row'}}>
-                <NavigationItem
-                    icon={require('../../img/mine/icon_navigation_item_set_white.png')}
-                    onPress={() => {
-                        navigation.navigate('SettingScene')
-                    }}
-                />
-                <NavigationItem
-                    icon={require('../../img/mine/icon_navigation_item_message_white.png')}
-                    onPress={() => {
-
-                    }}
-                />
-            </View>
-        ),
-        headerStyle: {
-            backgroundColor: color.primary,
-            elevation: 0,
-            borderBottomWidth: 0,
-        },
+        title: '注册',
+        headerStyle: {backgroundColor: 'white'},
     })
 
     state: {
@@ -66,9 +44,7 @@ class MineScene extends PureComponent<Props, State> {
             avatarSource: null,
         }
     }
-    componentDidMount() {
 
-    }
     onHeaderRefresh() {
         this.setState({isRefreshing: true})
 
@@ -83,10 +59,7 @@ class MineScene extends PureComponent<Props, State> {
             let sublist = dataList[i]
             for (let j = 0; j < sublist.length; j++) {
                 let data = sublist[j]
-                let cell = <DetailCell image={data.image} title={data.title} subtitle={data.subtitle} key={data.title}
-                                       onPress={() => {
-                                           this.props.navigation.navigate(data.path)
-                                       }}/>
+                let cell = <DetailCell image={data.image} title={data.title} subtitle={data.subtitle} key={data.title} />
                 cells.push(cell)
             }
             cells.push(<SpacingView key={i} />)
@@ -143,7 +116,7 @@ class MineScene extends PureComponent<Props, State> {
                         <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
                             <Image style={styles.avatar} source={this.state.avatarSource?this.state.avatarSource:require('../../img/mine/avatar.png')} />
                         </TouchableOpacity>
-                        <Heading2 style={{color: 'white'}}>{this.props.navigation.state.params?this.props.navigation.state.params.name:'sda'}</Heading2>
+                        <Heading2 style={{color: 'white'}}>素敌</Heading2>
                     </View>
                     <Paragraph style={{color: 'white', marginTop: 4}}>个人信息 ></Paragraph>
                 </View>
@@ -189,9 +162,8 @@ class MineScene extends PureComponent<Props, State> {
                     {title: '积分商城', subtitle: '好礼已上线', image: require('../../img/mine/icon_mine_member.png')}
                 ],
                 [
-                    {title: '客服中心', image: require('../../img/mine/icon_mine_customerService.png'),path:'Map3D'},
-                    {title: '修改标签', image: require('../../img/mine/icon_mine_customerService.png'),path:'CustomKeyPage'},
-                    {title: '关于美团', subtitle: '我要合作', image: require('../../img/mine/icon_mine_aboutmeituan.png')},
+                    {title: '客服中心', image: require('../../img/mine/icon_mine_customerService.png')},
+                    {title: '关于美团', subtitle: '我要合作', image: require('../../img/mine/icon_mine_aboutmeituan.png')}
                 ]
             ]
         )
@@ -229,4 +201,3 @@ const styles = StyleSheet.create({
 })
 
 
-export default MineScene

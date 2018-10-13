@@ -20,7 +20,6 @@ import api from '../../api'
 import HomeMenuView from './HomeMenuView'
 import HomeGridView from './HomeGridView'
 import GroupPurchaseCell from '../GroupPurchase/GroupPurchaseCell'
-import { Button } from 'antd-mobile';
 import SplashScreen from "rn-splash-screen";
 import QrCodeScanner from "./QrCodeScanner";
 import ImageSlider from 'react-native-image-slider';

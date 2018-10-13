@@ -28,9 +28,13 @@ import TakePicture from "./scene/Home/TakePicture";
 import QrCodeScanner from "./scene/Home/QrCodeScanner";
 import PopoverMenu from "./scene/Home/PopoverMenu/PopoverMenu";
 import Map3D from "./scene/Nearby/Map3D";
+import CustomKeyPage from "./scene/Mine/CustomKeyPage";
+import LoginScene from "./scene/Mine/LoginScene";
+import RegisterScene from "./scene/Mine/RegisterScene";
+import FindPass from "./scene/Mine/FindPass";
+import SettingScene from "./scene/Mine/SettingScene";
 
 const lightContentScenes = ['Home', 'Mine']
-
 function getCurrentRouteName(navigationState: any) {
     if (!navigationState) {
         return null
@@ -159,6 +163,11 @@ const Navigator = StackNavigator(
         QrCodeScanner: {screen: QrCodeScanner},
         PopoverMenu: {screen: PopoverMenu},
         Map3D: {screen: Map3D},
+        CustomKeyPage: {screen: CustomKeyPage},
+        LoginScene: {screen: LoginScene},
+        RegisterScene: {screen:RegisterScene},
+        FindPass: {screen: FindPass},
+        SettingScene: {screen: SettingScene},
     },
     {
         navigationOptions: {

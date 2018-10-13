@@ -18,6 +18,7 @@ type Props = {
     style?: ViewPropTypes.style,
     title: string,
     subtitle?: string,
+    onPress?: Function,
 }
 
 class DetailCell extends PureComponent<Props> {
@@ -26,7 +27,7 @@ class DetailCell extends PureComponent<Props> {
 
         return (
             <View style={styles.container}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={this.props.onPress}>
                     <View style={[styles.content, this.props.style]}>
                         {icon}
                         <Heading3>{this.props.title}</Heading3>
