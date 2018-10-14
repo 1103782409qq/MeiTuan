@@ -156,6 +156,7 @@ android {
 }
 
 dependencies {
+    compile project(':RCTWeChat')
     compile project(':jcore-react-native')
     compile project(':jpush-react-native')
     compile project(':react-native-amap3d')

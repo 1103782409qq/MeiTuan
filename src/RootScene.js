@@ -33,6 +33,7 @@ import LoginScene from "./scene/Mine/LoginScene";
 import RegisterScene from "./scene/Mine/RegisterScene";
 import FindPass from "./scene/Mine/FindPass";
 import SettingScene from "./scene/Mine/SettingScene";
+import WechatShare from "./scene/Mine/WechatShare";
 
 const lightContentScenes = ['Home', 'Mine']
 function getCurrentRouteName(navigationState: any) {
@@ -168,6 +169,7 @@ const Navigator = StackNavigator(
         RegisterScene: {screen:RegisterScene},
         FindPass: {screen: FindPass},
         SettingScene: {screen: SettingScene},
+        WechatShare: {screen: WechatShare},
     },
     {
         navigationOptions: {

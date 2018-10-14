@@ -1,6 +1,7 @@
 package com.meituan;
 
 import android.app.Application;
+import com.theweflex.react.WeChatPackage;
 
 import com.facebook.react.ReactApplication;
 import cn.qiuxiang.react.amap3d.AMap3DPackage;
@@ -40,7 +41,8 @@ public class MainApplication extends Application implements ReactApplication {
             new VectorIconsPackage(),
             new ImagePickerPackage(),
             new SplashScreenPackage(),
-            new JPushPackage(SHUTDOWN_TOAST, SHUTDOWN_LOG)
+            new JPushPackage(SHUTDOWN_TOAST, SHUTDOWN_LOG),
+            new WeChatPackage()  // Add this line
       );
     }
 

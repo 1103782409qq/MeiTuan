@@ -192,6 +192,7 @@ class MineScene extends PureComponent<Props, State> {
                     {title: '客服中心', image: require('../../img/mine/icon_mine_customerService.png'),path:'Map3D'},
                     {title: '修改标签', image: require('../../img/mine/icon_mine_customerService.png'),path:'CustomKeyPage'},
                     {title: '关于美团', subtitle: '我要合作', image: require('../../img/mine/icon_mine_aboutmeituan.png')},
+                    {title: '分享', image: require('../../img/mine/icon_mine_aboutmeituan.png'),path:'WechatShare'},
                 ]
             ]
         )
