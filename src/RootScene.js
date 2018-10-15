@@ -178,6 +178,14 @@ const Navigator = StackNavigator(
             headerTintColor: '#333333',
             showIcon: true,
         },
+        initialRouteName:'Tab',//默认首页,若没有initialRouteName声明，则前面的页面排在第一个的就是首页
+        onTransitionStart:()=>{
+            console.log("导航栏切换开始");
+        },
+        onTransitionEnd:()=>{
+            console.log("导航栏结束");
+        },
+        mode:"card",//car:左右 modal:上下
     }
 )
 

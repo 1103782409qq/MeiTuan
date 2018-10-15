@@ -62,7 +62,7 @@ export default class SettingScene extends PureComponent<Props, State> {
                 let cell = <DetailCell image={data.image} title={data.title} subtitle={data.subtitle} key={data.title}
                                        onPress={() => {
                                            if(data.path=='LoginScene'){
-                                               this.props.navigation.popToTop()
+                                               this.props.navigation.pop()
                                            }else{
                                                this.props.navigation.navigate(data.path)
                                            }

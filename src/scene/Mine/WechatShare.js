@@ -31,7 +31,7 @@ export default class WechatShare extends Component {
     constructor(props) {
         super(props);
         //应用注册
-        WeChat.registerApp('wx8d560da3ba038e7e');
+        WeChat.registerApp('wxf1f815f90ad36fd0');
     }
     render() {
         return (

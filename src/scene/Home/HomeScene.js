@@ -97,18 +97,15 @@ class HomeScene extends PureComponent<Props, State> {
         // 接收自定义消息
         JPushModule.addReceiveCustomMsgListener((message) => {
             this.setState({pushMsg: message});
-            alert(1)
         });
         // 接收推送通知
         JPushModule.addReceiveNotificationListener((message) => {
             console.log("receive notification: " + message);
-            alert(2)
         });
         // 打开通知
         JPushModule.addReceiveOpenNotificationListener((map) => {
             console.log("Opening notification!");
             console.log("map.extra: " + map.extras);
-            alert(3)
             // 可执行跳转操作，也可跳转原生页面
             this.props.navigation.navigate("SelectCity");
         });
