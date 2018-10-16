@@ -4,6 +4,8 @@ import android.app.Application;
 import com.theweflex.react.WeChatPackage;
 
 import com.facebook.react.ReactApplication;
+import cn.jiguang.share.android.api.JShareInterface;
+import cn.jiguang.share.reactnative.JSharePackage;
 import cn.qiuxiang.react.amap3d.AMap3DPackage;
 import ui.popovermenu.RNPopoverMenuPackage;
 import cn.qiuxiang.react.geolocation.AMapGeolocationPackage;
@@ -34,6 +36,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new JSharePackage(SHUTDOWN_TOAST, SHUTDOWN_LOG),
             new AMap3DPackage(),
             new RNPopoverMenuPackage(),
             new AMapGeolocationPackage(),
@@ -61,6 +64,7 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
+    JShareInterface.init(this);
   }
 
 

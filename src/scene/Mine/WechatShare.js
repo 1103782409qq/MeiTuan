@@ -1,133 +1,139 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React from 'react';
+import ReactNative from 'react-native';
+import JShareModule from 'jshare-react-native';
 
-import React, { Component } from 'react';
-import {
-    AppRegistry,
-    StyleSheet,
-    Text,
+const {
     View,
+    Text,
     TouchableHighlight,
-    ToastAndroid,
-} from 'react-native';
-var WeChat=require('react-native-wechat');
-//import fs from 'react-native-fs';
-class CustomButton extends Component {
-    render() {
-        return (
-            <TouchableHighlight
-                style={styles.button}
-                underlayColor="#a5a5a5"
-                onPress={this.props.onPress}>
-                <Text style={styles.buttonText}>{this.props.text}</Text>
-            </TouchableHighlight>
-        );
-    }
-}
-export default class WechatShare extends Component {
+    StyleSheet,
+    ScrollView,
+} = ReactNative;
+
+
+
+export default class WechatShare extends React.Component {
     constructor(props) {
         super(props);
-        //应用注册
-        WeChat.registerApp('wxf1f815f90ad36fd0');
     }
+
+    componentDidMount() {
+        JShareModule.setDebug({ enable: true })
+    }
+
+    onSharePress1 = () => {
+        var shareParam = {
+            platform: "wechat_session",
+            // type: "image",
+            // imagePath: "/storage/emulated/0/DCIM/Camera/IMG20170707202330.jpg"
+            type: "link",
+            url: "https://jiguang.cn",
+            text: "JShare test text2",
+        };
+        JShareModule.share(shareParam, (map) => {
+            alert(map)
+            console.log("share result: " + JSON.stringify(map));
+        }, (map) => {
+            alert(map)
+            console.log( map);
+        });
+    }
+    onSharePress2 = () => {
+        var shareParam = {
+            platform: "wechat_timeLine",
+            // type: "image",
+            // imagePath: "/storage/emulated/0/DCIM/Camera/IMG20170707202330.jpg"
+            type: "link",
+            url: "https://jiguang.cn",
+            text: "JShare test text2",
+        };
+        JShareModule.share(shareParam, (map) => {
+            alert(map)
+            console.log("share result: " + JSON.stringify(map));
+        }, (map) => {
+            alert(map)
+            console.log( map);
+        });
+    }
+    onSharePress3 = () => {
+        var shareParam = {
+            platform: "wechat_favourite",
+            // type: "image",
+            // imagePath: "/storage/emulated/0/DCIM/Camera/IMG20170707202330.jpg"
+            type: "link",
+            url: "https://jiguang.cn",
+            text: "JShare test text2",
+        };
+        JShareModule.share(shareParam, (map) => {
+            alert(map)
+            console.log("share result: " + JSON.stringify(map));
+        }, (map) => {
+            alert(map)
+            console.log( map);
+        });
+    }
+
+
     render() {
         return (
-            <View style={{margin:20}}>
-                <Text style={styles.welcome}>
-                    微信好友/朋友圈分享实例
+            <ScrollView style={styles.container}>
+                <Text
+                    style={styles.welcome}>
+                    Welcome !
                 </Text>
-                <CustomButton text='微信好友分享-文本'
-                              onPress={() => {
-                                  WeChat.isWXAppInstalled()
-                                      .then((isInstalled) => {
-                                          if (isInstalled) {
-                                              WeChat.shareToSession({type: 'text', description: '测试微信好友分享文本'})
-                                                  .catch((error) => {
-                                                      ToastShort(error.message);
-                                                  });
-                                          } else {
-                                              ToastShort('没有安装微信软件，请您安装微信之后再试');
-                                          }
-                                      });
-                              }}
-                />
-                <CustomButton text='微信好友分享-链接'
-                              onPress={() => {
-                                  WeChat.isWXAppInstalled()
-                                      .then((isInstalled) => {
-                                          if (isInstalled) {
-                                              WeChat.shareToSession({
-                                                  title:'微信好友测试链接',
-                                                  description: '分享自:江清清的技术专栏(www.lcode.org)',
-                                                  thumbImage: 'http://mta.zttit.com:8080/images/ZTT_1404756641470_image.jpg',
-                                                  type: 'news',
-                                                  webpageUrl: 'http://www.lcode.org'
-                                              })
-                                                  .catch((error) => {
-                                                      ToastShort(error.message);
-                                                  });
-                                          } else {
-                                              ToastShort('没有安装微信软件，请您安装微信之后再试');
-                                          }
-                                      });
-                              }}
-                />
-                <CustomButton text='微信朋友圈分享-文本'
-                              onPress={() => {
-                                  WeChat.isWXAppInstalled()
-                                      .then((isInstalled) => {
-                                          if (isInstalled) {
-                                              WeChat.shareToTimeline({type: 'text', description: '测试微信朋友圈分享文本'})
-                                                  .catch((error) => {
-                                                      ToastShort(error.message);
-                                                  });
-                                          } else {
-                                              ToastShort('没有安装微信软件，请您安装微信之后再试');
-                                          }
-                                      });
-                              }}
-                />
-                <CustomButton text='微信朋友圈分享-链接'
-                              onPress={() => {
-                                  WeChat.isWXAppInstalled()
-                                      .then((isInstalled) => {
-                                          if (isInstalled) {
-                                              WeChat.shareToTimeline({
-                                                  title:'微信朋友圈测试链接',
-                                                  description: '分享自:江清清的技术专栏(www.lcode.org)',
-                                                  thumbImage: 'http://mta.zttit.com:8080/images/ZTT_1404756641470_image.jpg',
-                                                  type: 'news',
-                                                  webpageUrl: 'http://www.lcode.org'
-                                              })
-                                                  .catch((error) => {
-                                                      ToastShort(error.message);
-                                                  });
-                                          } else {
-                                              ToastShort('没有安装微信软件，请您安装微信之后再试');
-                                          }
-                                      });
-                              }}
-                />
-            </View>
+                <TouchableHighlight
+                    underlayColor="#e4083f"
+                    activeOpacity={0.5}
+                    style={styles.btnStyle}
+                    onPress={this.onSharePress1}>
+                    <Text style={styles.btnTextStyle}>
+                        Share wechat_session
+                    </Text>
+                </TouchableHighlight>
+                <TouchableHighlight
+                    underlayColor="#e4083f"
+                    activeOpacity={0.5}
+                    style={styles.btnStyle}
+                    onPress={this.onSharePress2}>
+                    <Text style={styles.btnTextStyle}>
+                        Share wechat_timeLine
+                    </Text>
+                </TouchableHighlight>
+                <TouchableHighlight
+                    underlayColor="#e4083f"
+                    activeOpacity={0.5}
+                    style={styles.btnStyle}
+                    onPress={this.onSharePress3}>
+                    <Text style={styles.btnTextStyle}>
+                        Share wechat_favourite
+                    </Text>
+                </TouchableHighlight>
+            </ScrollView>
         );
     }
 }
-const styles = StyleSheet.create({
 
+var styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 10,
+    },
     welcome: {
-        fontSize: 20,
         textAlign: 'center',
         margin: 10,
     },
-    button: {
-        margin:5,
-        backgroundColor: 'white',
-        padding: 15,
-        borderBottomWidth: StyleSheet.hairlineWidth,
-        borderBottomColor: '#cdcdcd',
+    btnStyle: {
+        marginTop: 10,
+        borderWidth: 1,
+        borderColor: '#3e83d7',
+        borderRadius: 8,
+        backgroundColor: '#3e83d7',
+        alignSelf: 'center',
+        justifyContent: 'center'
+    },
+    btnTextStyle: {
+        textAlign: 'center',
+        fontSize: 25,
+        color: '#ffffff'
     },
 });
-
