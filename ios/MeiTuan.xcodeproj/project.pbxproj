@@ -59,6 +59,7 @@
 		678FEB36F3144F3499FEDA58 /* libRCTJCoreModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FC501258EE6482DBCAF4FC3 /* libRCTJCoreModule.a */; };
 		68D1F0F2CE8C46C688E29EEA /* libRCTJShareModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4203461F679947EA8447A087 /* libRCTJShareModule.a */; };
 		64373CD4EA8E4DD99657AB8A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCD19488A2E4FFBB33D7255 /* CoreLocation.framework */; };
+		D7ABB2FECB02498B99C1451A /* libRNShare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C400D5B5BB494C21A4A1848D /* libRNShare.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -393,6 +394,8 @@
 		AD5E48F7AFFA4A74BA4BE059 /* RCTJShareModule.xcodeproj */ = {isa = PBXFileReference; name = "RCTJShareModule.xcodeproj"; path = "../node_modules/jshare-react-native/ios/RCTJShareModule.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		4203461F679947EA8447A087 /* libRCTJShareModule.a */ = {isa = PBXFileReference; name = "libRCTJShareModule.a"; path = "libRCTJShareModule.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		DCCD19488A2E4FFBB33D7255 /* CoreLocation.framework */ = {isa = PBXFileReference; name = "CoreLocation.framework"; path = "System/Library/Frameworks/CoreLocation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		24E1CBC30B8F43808B813B48 /* RNShare.xcodeproj */ = {isa = PBXFileReference; name = "RNShare.xcodeproj"; path = "../node_modules/react-native-share/ios/RNShare.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		C400D5B5BB494C21A4A1848D /* libRNShare.a */ = {isa = PBXFileReference; name = "libRNShare.a"; path = "libRNShare.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -434,6 +437,7 @@
 				678FEB36F3144F3499FEDA58 /* libRCTJCoreModule.a in Frameworks */,
 				68D1F0F2CE8C46C688E29EEA /* libRCTJShareModule.a in Frameworks */,
 				64373CD4EA8E4DD99657AB8A /* CoreLocation.framework in Frameworks */,
+				D7ABB2FECB02498B99C1451A /* libRNShare.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +625,7 @@
 				AF24611F29E94829AC358244 /* RCTJPushModule.xcodeproj */,
 				A47E14E25210455EBAF9AAF2 /* RCTJCoreModule.xcodeproj */,
 				AD5E48F7AFFA4A74BA4BE059 /* RCTJShareModule.xcodeproj */,
+				24E1CBC30B8F43808B813B48 /* RNShare.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1174,11 +1179,13 @@
 					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule",
 					"$(SRCROOT)/../node_modules/jcore-react-native/ios/RCTJCoreModule",
 					"$(SRCROOT)/../node_modules/jshare-react-native/ios/RCTJShareModule",
+					"$(SRCROOT)/../node_modules/react-native-share/ios",
 				);
 				INFOPLIST_FILE = MeiTuan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
@@ -1220,11 +1227,13 @@
 					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule",
 					"$(SRCROOT)/../node_modules/jcore-react-native/ios/RCTJCoreModule",
 					"$(SRCROOT)/../node_modules/jshare-react-native/ios/RCTJShareModule",
+					"$(SRCROOT)/../node_modules/react-native-share/ios",
 				);
 				INFOPLIST_FILE = MeiTuan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",

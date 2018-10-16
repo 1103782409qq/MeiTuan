@@ -1,191 +1,74 @@
-import React from 'react';
-import ReactNative from 'react-native';
-import JShareModule from 'jshare-react-native';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
 
-const {
-    View,
-    Text,
-    TouchableHighlight,
+import React, { Component } from 'react';
+import {
+    Platform,
     StyleSheet,
-    ScrollView,
-} = ReactNative;
+    Text,
+    View,
+    Button
+} from 'react-native';
+import Share from 'react-native-share';
+// import images from './src/imageBase64';
 
+const instructions = Platform.select({
+    ios: 'Press Cmd+R to reload,\n' +
+        'Cmd+D or shake for dev menu',
+    android: 'Double tap R on your keyboard to reload,\n' +
+        'Shake or press menu button for dev menu',
+});
 
+type Props = {};
+export default class WechatShare extends Component<Props> {
 
-export default class WechatShare extends React.Component {
-    constructor(props) {
-        super(props);
+    onShare() {
+        const shareOptions = {
+            title: 'Share file',
+            // urls: [images.image1, images.image2],
+        };
+        return Share.open(shareOptions);
     }
 
-    componentDidMount() {
-        JShareModule.setDebug({ enable: true })
-    }
-
-    onSharePress1 = () => {
-        var shareParam = {
-            platform: "wechat_session",
-            // type: "image",
-            // imagePath: "/storage/emulated/0/DCIM/Camera/IMG20170707202330.jpg"
-            type: "link",
-            url: "https://jiguang.cn",
-            text: "JShare test text2",
+    onShare2() {
+        const shareOptions = {
+            title: 'Share file',
+            // url: images.image1,
         };
-        JShareModule.share(shareParam, (map) => {
-            alert(map)
-            console.log("share result: " + JSON.stringify(map));
-        }, (map) => {
-            alert(map)
-            console.log( map);
-        });
-    }
-    onSharePress2 = () => {
-        var shareParam = {
-            platform: "wechat_timeLine",
-            // type: "image",
-            // imagePath: "/storage/emulated/0/DCIM/Camera/IMG20170707202330.jpg"
-            type: "link",
-            url: "https://jiguang.cn",
-            text: "JShare test text2",
-        };
-        JShareModule.share(shareParam, (map) => {
-            alert(map)
-            console.log("share result: " + JSON.stringify(map));
-        }, (map) => {
-            alert(map)
-            console.log( map);
-        });
-    }
-    onSharePress3 = () => {
-        var shareParam = {
-            platform: "wechat_favourite",
-            // type: "image",
-            // imagePath: "/storage/emulated/0/DCIM/Camera/IMG20170707202330.jpg"
-            type: "link",
-            url: "https://jiguang.cn",
-            text: "JShare test text2",
-        };
-        JShareModule.share(shareParam, (map) => {
-            alert(map)
-            console.log("share result: " + JSON.stringify(map));
-        }, (map) => {
-            alert(map)
-            console.log( map);
-        });
-    }
-    onSharePress4 = () => {
-        var shareParam = {
-            platform: "qq",
-            // type: "image",
-            // imagePath: "/storage/emulated/0/DCIM/Camera/IMG20170707202330.jpg"
-            type: "link",
-            url: "https://jiguang.cn",
-            text: "JShare test text2",
-        };
-        JShareModule.share(shareParam, (map) => {
-            alert(map)
-            console.log("share result: " + JSON.stringify(map));
-        }, (map) => {
-            alert(map)
-            console.log( map);
-        });
-    }
-    onSharePress5 = () => {
-        var shareParam = {
-            title:'qzone share',
-            platform: "qzone",
-            // type: "image",
-            // imagePath: "/storage/emulated/0/DCIM/Camera/IMG20170707202330.jpg"
-            type: "link",
-            url: "https://jiguang.cn",
-            text: "JShare test text2",
-        };
-        JShareModule.share(shareParam, (map) => {
-            alert(map)
-            console.log("share result: " + JSON.stringify(map));
-        }, (map) => {
-            alert(map)
-            console.log( map);
-        });
+        return Share.open(shareOptions);
     }
 
     render() {
         return (
-            <ScrollView style={styles.container}>
-                <Text
-                    style={styles.welcome}>
-                    Welcome !
+            <View style={styles.container}>
+                <Text style={styles.welcome}>
+                    Welcome to React Native!
                 </Text>
-                <TouchableHighlight
-                    underlayColor="#e4083f"
-                    activeOpacity={0.5}
-                    style={styles.btnStyle}
-                    onPress={this.onSharePress1}>
-                    <Text style={styles.btnTextStyle}>
-                        Share wechat_session
-                    </Text>
-                </TouchableHighlight>
-                <TouchableHighlight
-                    underlayColor="#e4083f"
-                    activeOpacity={0.5}
-                    style={styles.btnStyle}
-                    onPress={this.onSharePress2}>
-                    <Text style={styles.btnTextStyle}>
-                        Share wechat_timeLine
-                    </Text>
-                </TouchableHighlight>
-                <TouchableHighlight
-                    underlayColor="#e4083f"
-                    activeOpacity={0.5}
-                    style={styles.btnStyle}
-                    onPress={this.onSharePress3}>
-                    <Text style={styles.btnTextStyle}>
-                        Share wechat_favourite
-                    </Text>
-                </TouchableHighlight>
-                <TouchableHighlight
-                    underlayColor="#e4083f"
-                    activeOpacity={0.5}
-                    style={styles.btnStyle}
-                    onPress={this.onSharePress4}>
-                    <Text style={styles.btnTextStyle}>
-                        Share qq
-                    </Text>
-                </TouchableHighlight>
-                <TouchableHighlight
-                    underlayColor="#e4083f"
-                    activeOpacity={0.5}
-                    style={styles.btnStyle}
-                    onPress={this.onSharePress5}>
-                    <Text style={styles.btnTextStyle}>
-                        Share qzone
-                    </Text>
-                </TouchableHighlight>
-            </ScrollView>
+                <Button title="Share 2 images" onPress={() => this.onShare()}/>
+                <Button title="Share single image" onPress={() => this.onShare2()}/>
+            </View>
         );
     }
 }
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
     },
     welcome: {
+        fontSize: 20,
         textAlign: 'center',
         margin: 10,
     },
-    btnStyle: {
-        marginTop: 10,
-        borderWidth: 1,
-        borderColor: '#3e83d7',
-        borderRadius: 8,
-        backgroundColor: '#3e83d7',
-        alignSelf: 'center',
-        justifyContent: 'center'
-    },
-    btnTextStyle: {
+    instructions: {
         textAlign: 'center',
-        fontSize: 25,
-        color: '#ffffff'
+        color: '#333333',
+        marginBottom: 5,
     },
 });
