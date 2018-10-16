@@ -72,7 +72,41 @@ export default class WechatShare extends React.Component {
             console.log( map);
         });
     }
-
+    onSharePress4 = () => {
+        var shareParam = {
+            platform: "qq",
+            // type: "image",
+            // imagePath: "/storage/emulated/0/DCIM/Camera/IMG20170707202330.jpg"
+            type: "link",
+            url: "https://jiguang.cn",
+            text: "JShare test text2",
+        };
+        JShareModule.share(shareParam, (map) => {
+            alert(map)
+            console.log("share result: " + JSON.stringify(map));
+        }, (map) => {
+            alert(map)
+            console.log( map);
+        });
+    }
+    onSharePress5 = () => {
+        var shareParam = {
+            title:'qzone share',
+            platform: "qzone",
+            // type: "image",
+            // imagePath: "/storage/emulated/0/DCIM/Camera/IMG20170707202330.jpg"
+            type: "link",
+            url: "https://jiguang.cn",
+            text: "JShare test text2",
+        };
+        JShareModule.share(shareParam, (map) => {
+            alert(map)
+            console.log("share result: " + JSON.stringify(map));
+        }, (map) => {
+            alert(map)
+            console.log( map);
+        });
+    }
 
     render() {
         return (
@@ -106,6 +140,24 @@ export default class WechatShare extends React.Component {
                     onPress={this.onSharePress3}>
                     <Text style={styles.btnTextStyle}>
                         Share wechat_favourite
+                    </Text>
+                </TouchableHighlight>
+                <TouchableHighlight
+                    underlayColor="#e4083f"
+                    activeOpacity={0.5}
+                    style={styles.btnStyle}
+                    onPress={this.onSharePress4}>
+                    <Text style={styles.btnTextStyle}>
+                        Share qq
+                    </Text>
+                </TouchableHighlight>
+                <TouchableHighlight
+                    underlayColor="#e4083f"
+                    activeOpacity={0.5}
+                    style={styles.btnStyle}
+                    onPress={this.onSharePress5}>
+                    <Text style={styles.btnTextStyle}>
+                        Share qzone
                     </Text>
                 </TouchableHighlight>
             </ScrollView>

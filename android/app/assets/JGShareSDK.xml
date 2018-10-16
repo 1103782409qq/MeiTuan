@@ -4,6 +4,11 @@
     <!-- 如果不需要支持某平台，可缺省该平台的配置-->
 
 
+
+    <QQ
+            AppId="101378599"
+            AppKey="dea5b31c5f6ca0acbd1fabbdf876f794"/>
+
     <Wechat
             AppId="wxf1f815f90ad36fd0"
             AppSecret="ff7a9a043de8c6a9bcb25ff5fa323e5c"/>
