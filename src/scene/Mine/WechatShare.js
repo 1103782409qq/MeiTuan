@@ -1,54 +1,67 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
-    Platform,
+    ScrollView,
     StyleSheet,
     Text,
-    View,
-    Button
-} from 'react-native';
-import Share from 'react-native-share';
-// import images from './src/imageBase64';
+    TouchableOpacity,
+    View
+} from "react-native";
+import Modal from "react-native-modal";
 
-const instructions = Platform.select({
-    ios: 'Press Cmd+R to reload,\n' +
-        'Cmd+D or shake for dev menu',
-    android: 'Double tap R on your keyboard to reload,\n' +
-        'Shake or press menu button for dev menu',
-});
+export default class WechatShare extends Component {
+    state = {
+        visibleModal: null
+    };
 
-type Props = {};
-export default class WechatShare extends Component<Props> {
+    renderButton = (text, onPress) => (
+        <TouchableOpacity onPress={onPress}>
+            <View style={styles.button}>
+                <Text>{text}</Text>
+            </View>
+        </TouchableOpacity>
+    );
 
-    onShare() {
-        const shareOptions = {
-            title: 'Share file',
-            // urls: [images.image1, images.image2],
-        };
-        return Share.open(shareOptions);
-    }
 
-    onShare2() {
-        const shareOptions = {
-            title: 'Share file',
-            // url: images.image1,
-        };
-        return Share.open(shareOptions);
-    }
+    handleOnScroll = event => {
+        this.setState({
+            scrollOffset: event.nativeEvent.contentOffset.y
+        });
+    };
+
+    handleScrollTo = p => {
+        if (this.scrollViewRef) {
+            this.scrollViewRef.scrollTo(p);
+        }
+    };
 
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    Welcome to React Native!
-                </Text>
-                <Button title="Share 2 images" onPress={() => this.onShare()}/>
-                <Button title="Share single image" onPress={() => this.onShare2()}/>
+
+                {this.renderButton("Scrollable modal", () =>
+                    this.setState({ visibleModal: 8 })
+                )}
+
+                <Modal
+                    isVisible={this.state.visibleModal === 8}
+                    onBackdropPress={() => this.setState({ visibleModal: null })}
+                    scrollTo={this.handleScrollTo}
+                    style={styles.bottomModal}
+                >
+                    <View style={styles.scrollableModal}>
+                        <ScrollView horizontal={true}
+                            ref={ref => (this.scrollViewRef = ref)}
+                            onScroll={this.handleOnScroll}
+                        >
+                            <View style={styles.scrollableModalContent1}>
+                                <Text>Scroll me up</Text>
+                            </View>
+                            <View style={styles.scrollableModalContent2}>
+                                <Text>Scroll me up2</Text>
+                            </View>
+                        </ScrollView>
+                    </View>
+                </Modal>
             </View>
         );
     }
@@ -57,18 +70,45 @@ export default class WechatShare extends Component<Props> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        justifyContent: "center",
+        alignItems: "center"
     },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
+    button: {
+        backgroundColor: "lightblue",
+        padding: 12,
+        margin: 16,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 4,
+        borderColor: "rgba(0, 0, 0, 0.1)"
     },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
+    modalContent: {
+        backgroundColor: "white",
+        padding: 22,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 4,
+        borderColor: "rgba(0, 0, 0, 0.1)"
     },
+    bottomModal: {
+        justifyContent: "flex-end",
+        margin: 0
+    },
+    scrollableModal: {
+        height: 200
+    },
+    scrollableModalContent1: {
+        height: 200,
+        width:300,
+        backgroundColor: "orange",
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    scrollableModalContent2: {
+        height: 200,
+        width:300,
+        backgroundColor: "red",
+        alignItems: "center",
+        justifyContent: "center"
+    }
 });
