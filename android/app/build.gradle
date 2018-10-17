@@ -161,6 +161,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-fs')
     compile project(':react-native-share')
     compile project(':jshare-react-native')
     compile project(':RCTWeChat')

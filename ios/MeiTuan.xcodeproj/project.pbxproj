@@ -60,6 +60,7 @@
 		68D1F0F2CE8C46C688E29EEA /* libRCTJShareModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4203461F679947EA8447A087 /* libRCTJShareModule.a */; };
 		64373CD4EA8E4DD99657AB8A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCD19488A2E4FFBB33D7255 /* CoreLocation.framework */; };
 		D7ABB2FECB02498B99C1451A /* libRNShare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C400D5B5BB494C21A4A1848D /* libRNShare.a */; };
+		8DFF8264AEA2470AB72E6EA6 /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B45EAEC7154100AD72AEE3 /* libRNFS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -396,6 +397,8 @@
 		DCCD19488A2E4FFBB33D7255 /* CoreLocation.framework */ = {isa = PBXFileReference; name = "CoreLocation.framework"; path = "System/Library/Frameworks/CoreLocation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		24E1CBC30B8F43808B813B48 /* RNShare.xcodeproj */ = {isa = PBXFileReference; name = "RNShare.xcodeproj"; path = "../node_modules/react-native-share/ios/RNShare.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		C400D5B5BB494C21A4A1848D /* libRNShare.a */ = {isa = PBXFileReference; name = "libRNShare.a"; path = "libRNShare.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		CF5A47F9DB8D4ED1A4DA4D7D /* RNFS.xcodeproj */ = {isa = PBXFileReference; name = "RNFS.xcodeproj"; path = "../node_modules/react-native-fs/RNFS.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		24B45EAEC7154100AD72AEE3 /* libRNFS.a */ = {isa = PBXFileReference; name = "libRNFS.a"; path = "libRNFS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -438,6 +441,7 @@
 				68D1F0F2CE8C46C688E29EEA /* libRCTJShareModule.a in Frameworks */,
 				64373CD4EA8E4DD99657AB8A /* CoreLocation.framework in Frameworks */,
 				D7ABB2FECB02498B99C1451A /* libRNShare.a in Frameworks */,
+				8DFF8264AEA2470AB72E6EA6 /* libRNFS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,6 +630,7 @@
 				A47E14E25210455EBAF9AAF2 /* RCTJCoreModule.xcodeproj */,
 				AD5E48F7AFFA4A74BA4BE059 /* RCTJShareModule.xcodeproj */,
 				24E1CBC30B8F43808B813B48 /* RNShare.xcodeproj */,
+				CF5A47F9DB8D4ED1A4DA4D7D /* RNFS.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1180,11 +1185,13 @@
 					"$(SRCROOT)/../node_modules/jcore-react-native/ios/RCTJCoreModule",
 					"$(SRCROOT)/../node_modules/jshare-react-native/ios/RCTJShareModule",
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
+					"$(SRCROOT)/../node_modules/react-native-fs/**",
 				);
 				INFOPLIST_FILE = MeiTuan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
@@ -1228,11 +1235,13 @@
 					"$(SRCROOT)/../node_modules/jcore-react-native/ios/RCTJCoreModule",
 					"$(SRCROOT)/../node_modules/jshare-react-native/ios/RCTJShareModule",
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
+					"$(SRCROOT)/../node_modules/react-native-fs/**",
 				);
 				INFOPLIST_FILE = MeiTuan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
 					"\"$(SRCROOT)/MeiTuan\"",
