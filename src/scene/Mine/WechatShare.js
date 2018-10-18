@@ -25,7 +25,7 @@ export default class WechatShare extends Component<Props> {
     }
 
     //下载文件
-    downloadFile() {
+    downloadFile(imgURL) {
 
         let dirs = Platform.OS === 'ios' ? FS.LibraryDirectoryPath : FS.ExternalDirectoryPath; //外部文件，共享目录的绝对路径
         const downloadDest = `${dirs}/${((Math.random() * 1000) | 0)}.jpg`;
@@ -73,12 +73,9 @@ export default class WechatShare extends Component<Props> {
     render() {
         return (
             <View style={styles.container}>
-                <Image style={{backgroundColor: 'pink', width: 100, height: 100}}
-                       source={{uri: imgURL}}
-                />
                 <Text style={{width: 100, height: 100, marginTop: 100, backgroundColor: 'cyan'}}
                       onPress={() => {
-                          this.downloadFile();
+                          this.downloadFile(imgURL);
                       }}
                 >
                     text
