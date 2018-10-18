@@ -31,7 +31,6 @@ export default class WechatShare extends Component<Props> {
     constructor(props) {
         super(props);
         this.state = {
-            progressNum: 0,
             imgggg:'',
             newDownloadDest:''
         }
@@ -284,14 +283,6 @@ const styles = StyleSheet.create({
         backgroundColor: "lightblue",
         padding: 12,
         margin: 16,
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: 4,
-        borderColor: "rgba(0, 0, 0, 0.1)"
-    },
-    modalContent: {
-        backgroundColor: "white",
-        padding: 22,
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 4,
