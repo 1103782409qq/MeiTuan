@@ -49,10 +49,16 @@
         <meta-data
                 android:name="com.amap.api.v2.apikey"
                 android:value="3296a2d937e276afdbcc7478aba6caa6"/>
+        <!-- Optional 微信分享回调,wxapi必须在包名路径下，否则回调不成功-->
         <activity
                 android:name=".wxapi.WXEntryActivity"
                 android:theme="@android:style/Theme.NoTitleBar"
                 android:exported="true" />
+        <!-- Optional jchatpro分享回调,plugin必须在包名路径下，否则回调不成功-->
+        <activity android:name=".plugin.JChatProCallbackActivity"
+                  android:exported="true"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+        />
         <provider
                 android:name="android.support.v4.content.FileProvider"
                 android:authorities="com.meituan.fileprovider"
