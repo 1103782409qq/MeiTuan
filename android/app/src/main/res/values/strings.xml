@@ -1,3 +1,4 @@
 <resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">pnqSRVcPtZ891OZXka2FHGKMU99z44283646-2aa2-4863-874a-396b2d0a9fa1</string>
     <string name="app_name">MeiTuan</string>
 </resources>

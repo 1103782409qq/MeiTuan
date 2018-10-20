@@ -16,6 +16,7 @@ import {color, NavigationItem, SpacingView} from '../../widget'
 import {screen, system} from '../../common'
 import api from '../../api'
 
+import codePush from "react-native-code-push";
 
 import HomeMenuView from './HomeMenuView'
 import HomeGridView from './HomeGridView'
@@ -44,7 +45,7 @@ class HomeScene extends PureComponent<Props, State> {
         headerTitle: (
             <TouchableOpacity style={styles.searchBar}>
                 <Image source={require('../../img/home/search_icon.png')} style={styles.searchIcon} />
-                <Paragraph>一点点
+                <Paragraph>一点点11
                 </Paragraph>
             </TouchableOpacity>
         ),
@@ -78,6 +79,13 @@ class HomeScene extends PureComponent<Props, State> {
     }
 
     componentDidMount() {
+        codePush.sync({
+            updateDialog: true,
+            installMode: codePush.InstallMode.IMMEDIATE,
+            mandatoryInstallMode:codePush.InstallMode.IMMEDIATE,
+            //deploymentKey为刚才生成的,打包哪个平台的App就使用哪个Key,这里用IOS的打包测试
+            deploymentKey: 'pnqSRVcPtZ891OZXka2FHGKMU99z44283646-2aa2-4863-874a-396b2d0a9fa1',
+        });
         if(!this.props.navigation.state.params){
             this.props.navigation.setParams({name: '福州',_onShowPopover: this.onShowPopover})
         }else{

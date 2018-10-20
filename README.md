@@ -234,3 +234,4 @@ Github：https://github.com/huanxsd/MeiTuan
 19.react-native-popover-menu。link之后，run-android<br>
 20.React-Native使用自定义字体文件iconfont:https://www.imooc.com/article/34470<br>
 21.布局https://github.com/crazycodeboy/RNStudyNotes/blob/master/React%20Native布局/React%20Native布局详细指南/React%20Native布局详细指南.md<br>
+22.热更新https://blog.csdn.net/dounine/article/details/78529106<br>

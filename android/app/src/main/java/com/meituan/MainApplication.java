@@ -4,6 +4,7 @@ import android.app.Application;
 import com.theweflex.react.WeChatPackage;
 import cl.json.ShareApplication;
 import com.facebook.react.ReactApplication;
+import com.microsoft.codepush.react.CodePush;
 import com.rnfs.RNFSPackage;
 import cl.json.RNSharePackage;
 import cn.jiguang.share.android.api.JShareInterface;
@@ -29,6 +30,12 @@ public class MainApplication extends Application implements ReactApplication,Sha
     // 设置为true将不打印log
     private boolean SHUTDOWN_LOG = false;
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+
+        @Override
+        protected String getJSBundleFile() {
+        return CodePush.getJSBundleFile();
+        }
+    
     @Override
     public boolean getUseDeveloperSupport() {
       return BuildConfig.DEBUG;
@@ -38,6 +45,7 @@ public class MainApplication extends Application implements ReactApplication,Sha
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), BuildConfig.DEBUG),
             new RNFSPackage(),
             new RNSharePackage(),
             new JSharePackage(SHUTDOWN_TOAST, SHUTDOWN_LOG),
