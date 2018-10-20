@@ -25,7 +25,6 @@ import {Heading2, Heading3, Paragraph, Heading1} from '../../widget/Text'
 import {screen, system} from '../../common'
 import api, {recommendUrlWithId, groupPurchaseDetailWithId} from '../../api'
 import GroupPurchaseCell from './GroupPurchaseCell'
-const imgURL = 'https://img.zcool.cn/community/0142135541fe180000019ae9b8cf86.jpg@1280w_1l_2o_100sh.png';
 
 type Props = {
     navigation: any,
@@ -61,7 +60,10 @@ class GroupPurchaseScene extends PureComponent<Props, State> {
             imgggg:'',
             newDownloadDest:'',
             visibleModal: false,
-            text:'我是文本'
+            text:'我是文本',
+            title:'',
+            subtitle:'',
+            id:0
         }
     }
 
@@ -70,6 +72,10 @@ class GroupPurchaseScene extends PureComponent<Props, State> {
             this.requestData()
         })
         JShareModule.setDebug({enable: true})
+        console.log(this.props.navigation.state.params.info)
+        this.state.title=this.props.navigation.state.params.info.title
+        this.state.subtitle=this.props.navigation.state.params.info.subtitle
+        this.state.id=this.props.navigation.state.params.info.id
         this.downloadFile(this.props.navigation.state.params.info.imageUrl.replace('w.h', '480.0'));
         this.props.navigation.setParams({visibleModal: false})
     }
@@ -85,93 +91,104 @@ class GroupPurchaseScene extends PureComponent<Props, State> {
         }
     };
     onSharePress1 = () => {
+        this.props.navigation.setParams({visibleModal: false})
         var shareParam = {
             platform: "wechat_session",
             imagePath: this.newDownloadDest,//有值会显示该值，图片，没值就显示微信开放平台申请的那张图片
             type: "link",
             url: "https://jiguang.cn",
-            title:'JShare title',
-            text: "JShare test text2",
+            title:this.state.title,
+            text: this.state.subtitle,
         };
+        console.log(shareParam)
         JShareModule.share(shareParam, (map) => {
+            alert("share result: " + JSON.stringify(map));
             console.log("share result: " + JSON.stringify(map));
-            this.props.navigation.setParams({visibleModal: false})
         }, (map) => {
+            alert(JSON.stringify(map));
             console.log(map);
         });
     }
     onSharePress2 = () => {
+        this.props.navigation.setParams({visibleModal: false})
         var shareParam = {
             platform: "wechat_timeLine",
             imagePath: this.newDownloadDest,
             type: "link",
             url: "https://jiguang.cn",
-            title:'JShare title',
-            text: "JShare test text2",//朋友圈这个没用
+            title:this.state.title,
+            text: this.state.subtitle,//朋友圈这个没用
 
         };
+        console.log(shareParam)
         JShareModule.share(shareParam, (map) => {
+            alert("share result: " + JSON.stringify(map));
             console.log("share result: " + JSON.stringify(map));
-            this.props.navigation.setParams({visibleModal: false})
         }, (map) => {
+            alert(map);
             console.log(map);
         });
     }
     onSharePress3 = () => {
+        this.props.navigation.setParams({visibleModal: false})
         var shareParam = {
             platform: "qq",
             imagePath: this.newDownloadDest,//有值会显示该值，图片，没值就显示微信开放平台申请的那张图片
             type: "link",
             url: "https://jiguang.cn",
-            title:'JShare title',
-            text: "JShare test text2",//不显示，分享到后只显示链接
+            title:this.state.title,
+            text: this.state.subtitle,//不显示，分享到后只显示链接
         };
+        console.log(shareParam)
         JShareModule.share(shareParam, (map) => {
+            alert("share result: " + JSON.stringify(map));
             console.log("share result: " + JSON.stringify(map));
-            this.props.navigation.setParams({visibleModal: false})
         }, (map) => {
+            alert(map);
             console.log(map);
         });
     }
     onSharePress4 = () => {
+        this.props.navigation.setParams({visibleModal: false})
         var shareParam = {
             platform: "qzone",
             imagePath: this.newDownloadDest,
             type: "link",
             url: "https://jiguang.cn",
-            title:'JShare title',
-            text: "JShare test text2",//文字小一号
+            title:this.state.title,
+            text: this.state.subtitle,//文字小一号
         };
+        console.log(shareParam)
         JShareModule.share(shareParam, (map) => {
+            alert("share result: " + JSON.stringify(map));
             console.log("share result: " + JSON.stringify(map));
-            this.props.navigation.setParams({visibleModal: false})
         }, (map) => {
+            alert(map);
             console.log(map);
         });
     }
     onSharePress5 = () => {
+        this.props.navigation.setParams({visibleModal: false})
         const shareOptions = {
-            title: "React Native",
-            message: "Hola mundo",
-            url: "http://facebook.github.io/react-native/",
-            subject: "Share Link"
+            title: this.state.title,
+            message: this.state.title,
+            url: "https://jiguang.cn",
         };
         return Share.open(shareOptions);
     }
 
     async onSharePress6() {
+        this.props.navigation.setParams({visibleModal: false})
         Clipboard.setString(this.state.text);
         let str = await Clipboard.getString()
         console.log(str)//我是文本
     }
     //下载文件
     downloadFile(imgURL) {
-
         let dirs = Platform.OS === 'ios' ? FS.LibraryDirectoryPath : FS.ExternalDirectoryPath; //外部文件，共享目录的绝对路径
-        const downloadDest = `${dirs}/${((Math.random() * 1000) | 0)}.jpg`;
-        this.newDownloadDest=downloadDest;
+        // const downloadDest = `${dirs}/${((Math.random() * 1000) | 0)}.jpg`;
+        const downloadDest = `${dirs}/${this.state.id}.jpg`;
         const formUrl = imgURL;
-
         const options = {
             fromUrl: formUrl,
             toFile: downloadDest,
@@ -196,6 +213,8 @@ class GroupPurchaseScene extends PureComponent<Props, State> {
                 var promise = CameraRoll.saveToCameraRoll(downloadDest);//downloadDest可以替换成imgURL(网络图片地址)
                 promise.then(result =>{
                     console.log('保存成功！地址如下：\n' + 'file://' + downloadDest);
+                    // alert('保存成功！地址如下：\n' + 'file://' + downloadDest);
+                    this.newDownloadDest=downloadDest;
 
                 }).catch(function(error) {
                     console.log('保存失败！\n' + error);

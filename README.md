@@ -231,4 +231,5 @@ Github：https://github.com/huanxsd/MeiTuan
 16.高德地图 android的key:3296a2d937e276afdbcc7478aba6caa6。网址。添加插件后，执行link。然后react-native run-android，才能生效。https://github.com/qiuxiang/react-native-amap-geolocation<br>
 17."react-native-popover": "github:jeanregisser/react-native-popover#8a443d2699b404d55c324edc8536255150340789",popover中修改import PropTypes from 'prop-types';import createReactClass from 'create-react-class';直接拷贝github的readme中的代码即可<br>
 18.在constructor中this.handleMenuPress = this.handleMenuPress.bind(this)可以解决React-Native Undefined is not an object (evaluating 'this.refs.['DRAWER'])<br>
-19.react-native-popover-menu。link之后，run-android
+19.react-native-popover-menu。link之后，run-android<br>
+20.React-Native使用自定义字体文件iconfont:https://www.imooc.com/article/34470
