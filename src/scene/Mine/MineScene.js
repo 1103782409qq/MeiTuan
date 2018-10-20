@@ -140,9 +140,14 @@ class MineScene extends PureComponent<Props, State> {
             <View style={styles.header}>
                 <View>
                     <View style={{flexDirection: 'row', alignItems: 'center',}}>
-                        <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
+                        <TouchableOpacity  onPress={() => {
+                            this.props.navigation.navigate('LoginScene')
+                        }}>
                             <Image style={styles.avatar} source={this.state.avatarSource?this.state.avatarSource:require('../../img/mine/avatar.png')} />
                         </TouchableOpacity>
+                        {/*<TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>*/}
+                            {/*<Image style={styles.avatar} source={this.state.avatarSource?this.state.avatarSource:require('../../img/mine/avatar.png')} />*/}
+                        {/*</TouchableOpacity>*/}
                         <Heading2 style={{color: 'white'}}>{this.props.navigation.state.params?this.props.navigation.state.params.name:'sda'}</Heading2>
                     </View>
                     <Paragraph style={{color: 'white', marginTop: 4}}>个人信息 ></Paragraph>
