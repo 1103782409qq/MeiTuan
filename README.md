@@ -238,3 +238,4 @@ headerRight:
 17.antd popover 链接https://github.com/ant-design/ant-design-mobile-rn/issues/21。
 18.付款码https://github.com/cssivision/react-native-qrcode
 19.https://react.parts/react-native-image-picker?search=camera&collection=React+Native。从相机或者相册修改图片。遇到setState不成功的方法https://github.com/react-community/react-native-image-picker/issues/483。改进this.selectPhotoTapped.bind(this)<br>
+20.ios 使用高德地图成功，开始pod install之后，已经提示pod install compled，生成xcworkspace就代表成功，黄色警告不用管。run-ios再模拟器上报红色，报错，说是缺少bundle之类，应该重新安装node包；之后用xcode执行也报错，提示没找到，这也提示，错误应该是第三方的编译库没找到。应该删掉已有项目的node_modules重新npm install再run-ios。https://bbs.reactnative.cn/topic/4301/ios-rn-0-45%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E6%89%80%E9%9C%80%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BC%96%E8%AF%91%E5%BA%93-boost%E7%AD%89<br>

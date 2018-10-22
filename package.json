@@ -15,6 +15,7 @@
     "react": "16.0.0",
     "react-dom": "^16.5.0",
     "react-native": "0.50.1",
+    "react-native-amap3d": "^1.0.2",
     "react-native-app-intro-slider": "^1.0.1",
     "react-native-barcode-qrcode": "^1.0.0",
     "react-native-camera": "^1.2.0",

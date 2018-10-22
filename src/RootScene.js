@@ -25,6 +25,7 @@ import GroupPurchaseScene from './scene/GroupPurchase/GroupPurchaseScene'
 import SelectCity from './scene/SelectCity/SelectCity'
 import PayCode from "./scene/Home/PayCode";
 import QrCodeScanner from "./scene/Home/QrCodeScanner";
+import Map3D from "./scene/Nearby/Map3D";
 
 const lightContentScenes = ['Home', 'Mine']
 
@@ -153,6 +154,8 @@ const Navigator = StackNavigator(
         QrCodeScanner: {screen: QrCodeScanner},
         GroupPurchase: {screen: GroupPurchaseScene},
         SelectCity: {screen: SelectCity},
+        Map3D: {screen: Map3D},
+
     },
     {
         navigationOptions: {
