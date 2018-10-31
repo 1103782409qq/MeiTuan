@@ -2,24 +2,37 @@
  * Copyright (c) 2017-present, Liu Jinyong
  * All rights reserved.
  *
- * https://github.com/huanxsd/MeiTuan 
+ * https://github.com/huanxsd/MeiTuan
  * @flow
  */
 
 
 import React, {PureComponent} from 'react'
-import {View, Text, StyleSheet, StatusBar, Image, TouchableOpacity, ScrollView, RefreshControl} from 'react-native'
+import {View, Text, StyleSheet, StatusBar, Image, TouchableOpacity, TouchableHighlight,ScrollView, RefreshControl} from 'react-native'
 
 import {Heading2, Heading3, Paragraph} from '../../widget/Text'
 import {screen, system} from '../../common'
 import {color, DetailCell, NavigationItem, SpacingView} from '../../widget'
+import Toast, {DURATION} from 'react-native-easy-toast';
 
+import ImagePicker from 'react-native-image-picker';
+var options = {
+    title:null,
+    takePhotoButtonTitle:"拍照",
+    cancelButtonTitle:'取消',
+    chooseFromLibraryButtonTitle:'从手机相册选择',
+    storageOptions: {
+        skipBackup: true,
+        path: 'images'
+    }
+};
 type Props = {
 
 }
 
 type State = {
     isRefreshing: boolean,
+    avatarSource:string
 }
 
 class MineScene extends PureComponent<Props, State> {
@@ -49,14 +62,16 @@ class MineScene extends PureComponent<Props, State> {
     })
 
     state: {
-        isRefreshing: boolean
+        isRefreshing: boolean,
+        avatarSource:string
     }
 
     constructor(props: Object) {
         super(props)
 
         this.state = {
-            isRefreshing: false
+            isRefreshing: false,
+            avatarSource: null,
         }
     }
 
@@ -67,7 +82,6 @@ class MineScene extends PureComponent<Props, State> {
             this.setState({isRefreshing: false})
         }, 2000)
     }
-
     renderCells() {
         let cells = []
         let dataList = this.getDataList()
@@ -87,15 +101,54 @@ class MineScene extends PureComponent<Props, State> {
             </View>
         )
     }
+    selectPhotoTapped() {
+        this.refs.toast.show('hello world!');
+        const options = {
+            title:null,
+            takePhotoButtonTitle:"拍照",
+            cancelButtonTitle:'取消',
+            chooseFromLibraryButtonTitle:'从手机相册选择',
+            storageOptions: {
+                skipBackup: true,
+                path: 'images'
+            },
+            quality: 1.0,
+            allowsEditing: false
+        }
 
+        ImagePicker.showImagePicker(options, (response) => {
+            this.refs.toast.close()
+            console.log('Response = ', response, 'ww', this.state);
+
+            if (response.didCancel) {
+                console.log('User cancelled photo picker');
+            }
+            else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            }
+            else {
+                let source = { uri: response.uri };
+
+                // You can also display the image using data:
+                // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+
+                this.setState({
+                    avatarSource: source
+                });
+
+            }
+        });
+    }
     renderHeader() {
         return (
             <View style={styles.header}>
-                <Image style={styles.avatar} source={require('../../img/mine/avatar.png')} />
                 <View>
                     <View style={{flexDirection: 'row', alignItems: 'center',}}>
+                        <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
+                            <Image style={styles.avatar} source={this.state.avatarSource?this.state.avatarSource:require('../../img/mine/avatar.png')} />
+                        </TouchableOpacity>
                         <Heading2 style={{color: 'white'}}>素敌</Heading2>
-                        <Image style={{marginLeft: 4}} source={require('../../img/mine/beauty_technician_v15.png')} />
                     </View>
                     <Paragraph style={{color: 'white', marginTop: 4}}>个人信息 ></Paragraph>
                 </View>
@@ -104,6 +157,7 @@ class MineScene extends PureComponent<Props, State> {
     }
 
     render() {
+        console.log(this.state.avatarSource)
         return (
             <View style={{flex: 1, backgroundColor: color.paper}}>
                 <View style={{position: 'absolute', width: screen.width, height: screen.height / 2, backgroundColor: color.primary}} />
@@ -119,6 +173,7 @@ class MineScene extends PureComponent<Props, State> {
                     <SpacingView />
                     {this.renderCells()}
                 </ScrollView>
+                <Toast ref="toast" position='top' positionValue={200} fadeInDuration={750} fadeOutDuration={1000} opacity={0.8}/>
             </View>
         )
     }
@@ -169,7 +224,13 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         borderWidth: 2,
         borderColor: '#51D3C6'
-    }
+    },
+    container: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 })
 
 

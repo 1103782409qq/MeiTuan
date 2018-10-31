@@ -3,6 +3,11 @@ package com.meituan;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.imagepicker.ImagePickerPackage;
+import org.reactnative.camera.RNCameraPackage;
+import com.mehcode.reactnative.splashscreen.SplashScreenPackage;
+import ui.popovermenu.RNPopoverMenuPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -22,7 +27,12 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+          new MainReactPackage(),
+            new ImagePickerPackage(),
+            new RNCameraPackage(),
+            new SplashScreenPackage(),
+            new RNPopoverMenuPackage(),
+            new VectorIconsPackage()
       );
     }
 

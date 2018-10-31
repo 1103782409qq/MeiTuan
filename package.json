@@ -13,7 +13,16 @@
     "react-native-page-control": "^1.1.1",
     "react-native-refresh-list-view": "^1.0.6",
     "react-native-scrollable-tab-view": "^0.8.0",
-    "react-navigation": "^1.0.0-beta.19"
+    "react-navigation": "^1.0.0-beta.19",
+    "react-native-vector-icons": "^5.0.0",
+    "react-native-easy-toast": "^1.1.0",
+    "react-native-qrcode": "^0.2.7",
+    "react-native-qrcode-scanner": "^1.1.0",
+    "react-native-image-slider": "^2.0.3",
+    "react-native-popover-menu": "0.0.19",
+    "rn-splash-screen": "^5.2.0",
+    "react-native-camera": "^1.2.0",
+    "react-native-image-picker": "^0.26.10"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
