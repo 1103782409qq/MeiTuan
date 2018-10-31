@@ -3,6 +3,9 @@ package com.meituan;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.rnfs.RNFSPackage;
+import cn.qiuxiang.react.amap3d.AMap3DPackage;
+import cn.jiguang.share.reactnative.JSharePackage;
 import com.imagepicker.ImagePickerPackage;
 import org.reactnative.camera.RNCameraPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -27,6 +30,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFSPackage(),
+            new AMap3DPackage(),
+            new JSharePackage(),
             new ImagePickerPackage(),
             new RNCameraPackage(),
             new VectorIconsPackage(),
