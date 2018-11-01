@@ -58,6 +58,7 @@
 		E2C2473FA87C4722A21D3CBB /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F02B45327FE49D486F2BF25 /* FontAwesome5_Brands.ttf */; };
 		E54D5690776A46FFB9DB9285 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39A13A31662B4DF89C20CD03 /* Feather.ttf */; };
 		F545C81F0BE44F7A90CC0A72 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A5AB808466644FFAF9F6D5B /* Octicons.ttf */; };
+		FD19A70BBD12F6EF8B70F772 /* libPods-MeiTuan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D88CF454159562C8BE5A566B /* libPods-MeiTuan.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -400,6 +401,8 @@
 		2D02E4901E0B4A5D006451C7 /* MeiTuan-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MeiTuan-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		39A13A31662B4DF89C20CD03 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		3C3D460424CDD23F04327A8B /* Pods-MeiTuan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeiTuan.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeiTuan/Pods-MeiTuan.release.xcconfig"; sourceTree = "<group>"; };
+		44468CFB89CCD8F0EB4AB42B /* Pods-MeiTuan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeiTuan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeiTuan/Pods-MeiTuan.debug.xcconfig"; sourceTree = "<group>"; };
 		484ACFAABA8D4BDF9F7C6F9D /* RNCamera.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RNCamera.xcodeproj"; sourceTree = "<group>"; };
 		4A5AB808466644FFAF9F6D5B /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		4F02B45327FE49D486F2BF25 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
@@ -418,6 +421,7 @@
 		B59C055C42E34D6C8E36EAD1 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
 		B75692C850734059A6C54227 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		B92EA3E383634B299DCB9EC2 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
+		D88CF454159562C8BE5A566B /* libPods-MeiTuan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeiTuan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3BF541E84A8484B838363DF /* libRCTSplashScreen.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTSplashScreen.a; sourceTree = "<group>"; };
 		E689A301584F43E2BDA4B062 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		E83821EBDD354961BAE9DCDE /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
@@ -455,6 +459,7 @@
 				716A9DD206E64A6B963B4D81 /* libRCTSplashScreen.a in Frameworks */,
 				B0E7709D290E442B9075396D /* libRNCamera.a in Frameworks */,
 				800D1801B965479AA5DFA083 /* libRNImagePicker.a in Frameworks */,
+				FD19A70BBD12F6EF8B70F772 /* libPods-MeiTuan.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +609,7 @@
 			isa = PBXGroup;
 			children = (
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
+				D88CF454159562C8BE5A566B /* libPods-MeiTuan.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -721,6 +727,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				967492CB89FE4E37A225CE81 /* Resources */,
 				495904462189A07500903721 /* Recovered References */,
+				EE8A3B09C19EAC4E2DB4F67B /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -769,6 +776,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		EE8A3B09C19EAC4E2DB4F67B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				44468CFB89CCD8F0EB4AB42B /* Pods-MeiTuan.debug.xcconfig */,
+				3C3D460424CDD23F04327A8B /* Pods-MeiTuan.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -794,10 +810,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MeiTuan" */;
 			buildPhases = (
+				C0CB7BD9A0B00220ED9F65EC /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				E2FB12CC19F4B1EEEA8C0ECD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1340,6 +1358,50 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		C0CB7BD9A0B00220ED9F65EC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MeiTuan-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2FB12CC19F4B1EEEA8C0ECD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MeiTuan/Pods-MeiTuan-resources.sh",
+				"${PODS_ROOT}/AMap3DMap/MAMapKit.framework/AMap.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMap.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MeiTuan/Pods-MeiTuan-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1480,6 +1542,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44468CFB89CCD8F0EB4AB42B /* Pods-MeiTuan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1508,6 +1571,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C3D460424CDD23F04327A8B /* Pods-MeiTuan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;

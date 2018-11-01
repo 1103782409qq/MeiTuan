@@ -22,7 +22,8 @@
     "react-native-popover-menu": "0.0.19",
     "rn-splash-screen": "^5.2.0",
     "react-native-camera": "^1.2.0",
-    "react-native-image-picker": "^0.26.10"
+    "react-native-image-picker": "^0.26.10",
+    "react-native-amap3d": "^1.0.2"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
