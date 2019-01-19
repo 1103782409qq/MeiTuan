@@ -2,9 +2,10 @@
  * Copyright (c) 2017-present, Liu Jinyong
  * All rights reserved.
  *
- * https://github.com/huanxsd/MeiTuan  
+ * https://github.com/huanxsd/MeiTuan
  * @flow
  */
+
 
 
 import React, {PureComponent} from 'react'
@@ -28,6 +29,7 @@ import TakePicture from "./scene/Home/TakePicture";
 import QrCodeScanner from "./scene/Home/QrCodeScanner";
 import PopoverMenu from "./scene/Home/PopoverMenu/PopoverMenu";
 import Map3D from "./scene/Nearby/Map3D";
+import kefu from "./scene/Mine/Customer/kefu";
 import CustomKeyPage from "./scene/Mine/CustomKeyPage";
 import LoginScene from "./scene/Mine/LoginScene";
 import RegisterScene from "./scene/Mine/RegisterScene";
@@ -164,6 +166,7 @@ const Navigator = StackNavigator(
         QrCodeScanner: {screen: QrCodeScanner},
         PopoverMenu: {screen: PopoverMenu},
         Map3D: {screen: Map3D},
+        kefu: {screen: kefu},
         CustomKeyPage: {screen: CustomKeyPage},
         LoginScene: {screen: LoginScene},
         RegisterScene: {screen:RegisterScene},

@@ -24,6 +24,7 @@ import com.facebook.soloader.SoLoader;
 import java.util.Arrays;
 import java.util.List;
 import cn.jpush.reactnativejpush.JPushPackage;
+import cn.jiguang.imui.messagelist.ReactIMUIPackage;
 public class MainApplication extends Application implements ReactApplication,ShareApplication {
    // 设置为true将不弹出toast
     private boolean SHUTDOWN_TOAST = false;
@@ -35,7 +36,7 @@ public class MainApplication extends Application implements ReactApplication,Sha
         protected String getJSBundleFile() {
         return CodePush.getJSBundleFile();
         }
-    
+
     @Override
     public boolean getUseDeveloperSupport() {
       return BuildConfig.DEBUG;
@@ -45,6 +46,7 @@ public class MainApplication extends Application implements ReactApplication,Sha
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new ReactIMUIPackage(),
             new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), BuildConfig.DEBUG),
             new RNFSPackage(),
             new RNSharePackage(),
